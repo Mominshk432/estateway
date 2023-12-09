@@ -100,4 +100,35 @@
             }
         }
     })
+    $('.search-btn').on('click',function () {
+        const navigation = $('.top-navigation');
+        const search = $('.search-sec');
+        if(search.hasClass("d-none"))
+        {
+            navigation.addClass('d-none');
+            search.removeClass('d-none')
+        }
+        else
+        {
+            navigation.removeClass('d-none');
+            search.addClass('d-none')
+        }
+    })
+    $('.search-btn-mob').on('click',function () {
+
+        if($('.search-sec-mob').hasClass('d-none'))
+        {
+            $('.search-sec-mob').removeClass('d-none')
+        }
+        else
+        {
+            $('.search-sec-mob').addClass('d-none')
+        }
+    })
+    $('.search-box').on('click',function () {
+        if($('.search-menu').hasClass('d-none'))
+        {
+            $('.search-menu').removeClass('d-none')
+        }
+    })
 </script>

@@ -44,6 +44,11 @@
     transition: all .5s;
     left: 50%;
     transform: translateX(-50%);
+    top: 110%;
+}
+.search-sec
+{
+    display: block;
 }
 .project-link a:hover + .dropdown-project
 {
@@ -60,6 +65,7 @@
     background-color: #100F0D;
     display: flex;
     gap: 3rem;
+    border-radius: 5px;
 }
 .dropdown-project ul li a
 {
@@ -140,10 +146,16 @@ body {
     min-height: 110px;
     height: 110px;
     background-color: rgba(16, 15, 13, 0.9);
-    display: flex;
+    display: block;
     align-items: center;
     z-index: 9;
     width: 100%;
+}
+.search-menu
+{
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
 }
 .sticky-header
 {
