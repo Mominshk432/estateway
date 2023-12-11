@@ -57,7 +57,7 @@
                                                     <div class="card-header position-relative p-0">
                                                         <img
                                                             src="{{!empty($otherBlog->image) ? asset($otherBlog->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                                            class="w-100" alt="">
+                                                            class="w-100 h-220" alt="">
                                                     </div>
                                                     <div class="card-body p-0">
                                                         <div

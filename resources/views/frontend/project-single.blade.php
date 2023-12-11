@@ -189,7 +189,7 @@
                                         <div class="card border-transparent shadow p-0 bg-card">
                                             <div class="card-header position-relative p-0">
                                                 <img src="{{!empty($otherProject->images[0]->image) ? asset($otherProject->images[0]->image) : 'https://via.placeholder.com/1000x1000
-'}}" class="w-100" alt="img">
+                                                '}}" class="w-100 h-220" alt="img">
                                                 <div class="card-inner-section">
                                                     <p class="bg-yellow">Ready to move</p>
                                                     <div class="d-flex">

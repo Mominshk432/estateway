@@ -157,6 +157,11 @@ body {
     max-height: 200px;
     overflow-y: auto;
 }
+.h-220
+{
+    height: 220px;
+    object-fit: cover;
+}
 .sticky-header
 {
     top: 0 !important;

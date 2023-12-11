@@ -27,6 +27,32 @@
         $('.mobile-navigation-inner button').click(function () {
             $('.mobile-navigation').fadeOut();
         });
+        $('.main-slick-slider').slick({
+            dots: true,
+            speed: 300,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
         $('.client-slick-slider').slick({
             dots: true,
             speed: 300,

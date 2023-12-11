@@ -3,13 +3,13 @@
 @include('frontend.includes.head')
 <body>
 @include('frontend.includes.mobile-nav')
-<div class="carousel slide main-slider-section" data-bs-ride="carousel" data-bs-pause="false">
+<div id="carouselExampleIndicators" class="carousel slide main-slider-section" data-bs-ride="carousel" data-bs-pause="false">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         <div class="carousel-bar"></div>
     </div>
@@ -167,7 +167,7 @@
                                     <div class="card-header position-relative p-0">
                                         <img
                                             src="{{!empty($project->images[0]) ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="w-100"
+                                            class="w-100 h-220"
                                             alt="">
                                         <div class="card-inner-section">
                                             <p class="bg-yellow">Ready to move</p>
@@ -275,7 +275,7 @@
                                     Haryana 122004</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100" alt="">
+                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100 h-220" alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
@@ -310,7 +310,7 @@
                                 <p class="text-theme-soft-light">Sector 93, Gurugram, <br>Haryana, India</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100" alt="">
+                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100 h-220" alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
@@ -346,7 +346,7 @@
                                     Haryana 122004</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100" alt="">
+                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100 h-220" alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
@@ -381,7 +381,7 @@
                                 <p class="text-theme-soft-light">Sector 93, Gurugram, <br>Haryana, India</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100" alt="">
+                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100 h-220" alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
@@ -472,7 +472,7 @@
                                     <div class="card-header position-relative p-0">
                                         <img
                                             src="{{!empty($blog->image) ? asset($blog->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="w-100" alt="">
+                                            class="w-100 h-220" alt="">
                                     </div>
                                     <div class="card-body p-0">
                                         <div
