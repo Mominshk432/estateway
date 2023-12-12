@@ -24,7 +24,12 @@ class HomepageController extends Controller
             $store = HomepageSlider::create([
                 'heading' => $request->heading,
                 'description' => $request->description,
-                'image' => saveFiles($request->image, 'homepage-slider-images')
+                'image' => saveFiles($request->image, 'homepage-slider-images'),
+                'slider_link' => $request->slider_link,
+                'button_one_text' => $request->button_one_text,
+                'button_one_link' => $request->button_one_link,
+                'button_two_text' => $request->button_two_text,
+                'button_two_link' => $request->button_two_link
             ]);
 
             return json_encode([
@@ -39,6 +44,11 @@ class HomepageController extends Controller
         $data = [
             'heading' => $request->heading,
             'description' => $request->description,
+            'slider_link' => $request->slider_link,
+            'button_one_text' => $request->button_one_text,
+            'button_one_link' => $request->button_one_link,
+            'button_two_text' => $request->button_two_text,
+            'button_two_link' => $request->button_two_link
         ];
 
         if ($request->has('image')) {

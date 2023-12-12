@@ -46,6 +46,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        return redirect(route('admin.dashboard'));
+        return redirect(route('admin.about'));
     }
 }

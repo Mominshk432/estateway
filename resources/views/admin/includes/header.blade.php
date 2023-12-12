@@ -142,12 +142,12 @@
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#"
                    role="button"
                    aria-haspopup="false" aria-expanded="false">
-                                <span class="account-user-avatar">
-                                    <img
-                                        src="{{!empty(auth()->user()->image) ? asset(auth()->user()->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                        alt="user-image" width="32"
-                                        class="rounded-circle">
-                                </span>
+{{--                                <span class="account-user-avatar">--}}
+{{--                                    <img--}}
+{{--                                        src="{{!empty(auth()->user()->image) ? asset(auth()->user()->image) : 'https://via.placeholder.com/1000x1000'}}"--}}
+{{--                                        alt="user-image" width="32"--}}
+{{--                                        class="rounded-circle">--}}
+{{--                                </span>--}}
                     <span class="d-lg-block d-none">
                                     <h5 class="my-0 fw-normal">{{auth()->user()->name ?? ''}} <i
                                             class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
@@ -155,15 +155,15 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
                     <!-- item-->
-                    <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
-                    </div>
+{{--                    <div class=" dropdown-header noti-title">--}}
+{{--                        <h6 class="text-overflow m-0">Welcome !</h6>--}}
+{{--                    </div>--}}
 
                     <!-- item-->
-                    <a href="{{route('admin.profile')}}" class="dropdown-item">
-                        <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
-                        <span>My Profile</span>
-                    </a>
+{{--                    <a href="{{route('admin.profile')}}" class="dropdown-item">--}}
+{{--                        <i class="ri-account-circle-line fs-18 align-middle me-1"></i>--}}
+{{--                        <span>My Profile</span>--}}
+{{--                    </a>--}}
                     <!-- item-->
                     <form action="{{route('logout')}}" method="post">
                         @csrf

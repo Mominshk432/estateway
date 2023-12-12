@@ -7,6 +7,7 @@
         .director_msg_content + p {
             color: white !important;
         }
+
         .our_moto_content + p {
             color: white !important;
         }
@@ -16,8 +17,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="about-main-heading">
-                        <h1 class="text-uppercase ls-2">About Us</h1>
-                        <p>Our company at a glance</p>
+                        <h1 class="text-uppercase ls-2">{{$about_us->heading ?? ''}}</h1>
+                        <p>{{$about_us->subheading ?? ''}}</p>
                     </div>
                     <p class="w-75-custom text-theme-dark">
                         {!! $about_us->description !!}
@@ -28,8 +29,8 @@
                     <div class="position-relative">
                         <img src="{{asset('frontend/assets/images/about.svg')}}" class="w-100 about-main-img" alt="">
                         <button class="btn btn-theme-about gap-3"><span>Contact Us</span> <span><img
-                                    src="{{asset('frontend/assets/images/arrow-right-black.svg')}}" width="40"
-                                    alt=""></span></button>
+                                        src="{{asset('frontend/assets/images/arrow-right-black.svg')}}" width="40"
+                                        alt=""></span></button>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="text-theme-light message-heading">
-                        Director’s Message
+                        {{$director_message->section_heading ?? ''}}
                     </h2>
                     <div class="my-2">
                         <img style="height: 100px;width: 100px" src="{{!empty($director_message->image) ? asset($director_message->image) : 'https://via.placeholder.com/1000x1000'}}
@@ -62,8 +63,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="choose-main">
-                        <h2>WHY CHOOSE US</h2>
-                        <p>It’s easy to rent an apartment with us</p>
+                        <h2>{{$why_choose_us->main_heading ?? ''}}</h2>
+                        <p>{{$why_choose_us->main_subheading ?? ''}}</p>
                     </div>
                 </div>
                 <div class="col-12 mt-3">
@@ -95,9 +96,9 @@
                                 <div class="col-lg-4">
                                     <div class="building">
                                         <img
-                                            src="{{!empty($why_choose_us->image) ? asset($why_choose_us->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="w-100"
-                                            alt="">
+                                                src="{{!empty($why_choose_us->image) ? asset($why_choose_us->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                                class="w-100"
+                                                alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
@@ -159,7 +160,7 @@
                              alt="relation-icon">
                     </div>
                     <p class="text-center relation-content mb-0 our_moto_content">
-                       {!! $our_moto->content_3 !!}
+                        {!! $our_moto->content_3 !!}
                     </p>
                 </div>
             </div>

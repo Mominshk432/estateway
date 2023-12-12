@@ -69,6 +69,19 @@
                                             <form id="update_about_us_form">
                                                 @csrf
                                                 <input type="hidden" value="{{$about_us->id}}" name="id">
+                                                <div class="form-group mb-3">
+                                                    <label for=""><b>Heading</b></label>
+                                                    <input value="{{$about_us->heading ?? ''}}" type="text"
+                                                           name="about_heading" placeholder="heading..."
+                                                           class="form-control">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for=""><b>Subheading</b></label>
+                                                    <input type="text" value="{{$about_us->subheading ?? ''}}"
+                                                           name="about_subheading"
+                                                           placeholder="subheading..."
+                                                           class="form-control">
+                                                </div>
                                                 <textarea class="form-control editor" name="description" id="" cols="30"
                                                           rows="05">{{$about_us->description ?? ''}}</textarea>
 
@@ -95,6 +108,12 @@
                                                             type="file" class="d-none" name="image">
                                                     </div>
                                                     <div class="col-9">
+                                                        <div class="form-group mb-3">
+                                                            <label for="" class="mb-1"><b>Section Heading</b></label>
+                                                            <input type="text" class="form-control"
+                                                                   value="{{$director_message->section_heading ?? ''}}"
+                                                                   name="director_section_heading">
+                                                        </div>
                                                         <div class="form-group mb-3">
                                                             <label for="" class="mb-1"><b>Heading</b></label>
                                                             <input type="text" class="form-control"
@@ -130,6 +149,21 @@
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$why_choose_us->id}}">
                                                 <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-2">
+                                                            <label for="" class="mb-1"><b>Main Heading</b></label>
+                                                            <input value="{{$why_choose_us->main_heading ?? ''}}"
+                                                                   type="text" class="form-control" name="main_heading">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-2">
+                                                            <label for="" class="mb-1"><b>Main Subheading</b></label>
+                                                            <input value="{{$why_choose_us->main_subheading ?? ''}}"
+                                                                   type="text" class="form-control"
+                                                                   name="main_subheading">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-6">
                                                         <div class="form-group mb-2">
                                                             <label for="" class="mb-1"><b>Heading</b></label>

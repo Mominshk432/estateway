@@ -24,12 +24,16 @@ class AboutSettingsController extends Controller
     {
 
         $validated = $request->validate([
-            'description' => ['required']
+            'description' => ['required'],
+            'about_heading' => ['required'],
+            'about_subheading' => ['required']
         ]);
 
         if ($validated) {
             $update = about_us::where('id', $request->id)->update([
-                'description' => $request->description
+                'description' => $request->description,
+                'heading' => $request->about_heading,
+                'subheading' => $request->about_subheading
             ]);
 
             return json_encode([
@@ -44,13 +48,15 @@ class AboutSettingsController extends Controller
         $validated = $request->validate([
             'heading' => ['required'],
             'subheading' => ['required'],
-            'description' => ['required']
+            'description' => ['required'],
+            'director_section_heading' => ['required']
         ]);
 
         $data = [
             'heading' => $request->heading,
             'subheading' => $request->subheading,
-            'description' => $request->description
+            'description' => $request->description,
+            'section_heading' => $request->director_section_heading
         ];
 
         if ($request->has('image')) {
@@ -75,7 +81,9 @@ class AboutSettingsController extends Controller
             'heading_3' => $request->heading3,
             'content_3' => $request->content3,
             'heading_4' => $request->heading4,
-            'content_4' => $request->content4
+            'content_4' => $request->content4,
+            'main_heading' => $request->main_heading,
+            'main_subheading' => $request->main_subheading
         ];
 
         if ($request->has('image')) {

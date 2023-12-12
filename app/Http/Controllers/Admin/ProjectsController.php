@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CustomSpecs;
 use App\Models\Project;
 use App\Models\ProjectImages;
 use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ class ProjectsController extends Controller
 
     public function store(Request $request)
     {
+
+
         $validated = $request->validate([
             'heading' => ['required'],
             'address' => ['required'],
@@ -33,6 +36,28 @@ class ProjectsController extends Controller
             'image' => ['required'],
             'site_plan' => ['required']
         ]);
+        if ($request->has('more_specs_title')) {
+            foreach ($request->more_specs_title as $key => $item) {
+                if (empty($item)) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification title is required'
+                    ]);
+                }
+                if (empty($request->more_specs_value[$key])) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification value is required'
+                    ]);
+                }
+                if (empty($request->more_specs_icon[$key])) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification icon is required'
+                    ]);
+                }
+            }
+        }
         if ($validated) {
             $store = Project::create([
                 'heading' => $request->heading,
@@ -56,6 +81,15 @@ class ProjectsController extends Controller
                         'image' => saveFiles($img, 'project-images')
                     ]);
                 }
+            }
+
+            foreach ($request->more_specs_title as $key => $item) {
+                $create = CustomSpecs::create([
+                    'project_id' => $store->id,
+                    'title' => $item,
+                    'value' => $request->more_specs_value[$key],
+                    'icon' => saveFiles($request->more_specs_icon[$key], 'custom_specs_icon')
+                ]);
             }
 
             return json_encode([
@@ -95,6 +129,28 @@ class ProjectsController extends Controller
             'size' => ['required', 'integer'],
             'google_map' => ['required'],
         ]);
+        if ($request->has('more_specs_title')) {
+            foreach ($request->more_specs_title as $key => $item) {
+                if (empty($item)) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification title is required'
+                    ]);
+                }
+                if (empty($request->more_specs_value[$key])) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification value is required'
+                    ]);
+                }
+                if (empty($request->more_specs_icon[$key]) && empty($request->old_more_specs_icon[$key])) {
+                    return json_encode([
+                        'error' => true,
+                        'message' => 'All specification icon is required'
+                    ]);
+                }
+            }
+        }
         if ($request->has('oldImages')) {
             foreach ($request->oldImages as $oldImage) {
                 $images[] = $oldImage;
@@ -139,7 +195,15 @@ class ProjectsController extends Controller
                 }
             }
         }
-
+        $deleteCustomSpecs = CustomSpecs::where('project_id', $request->id)->delete();
+        foreach ($request->more_specs_title as $key => $item) {
+            $create = CustomSpecs::create([
+                'project_id' => $request->id,
+                'title' => $item,
+                'value' => $request->more_specs_value[$key],
+                'icon' => isset($request->more_specs_icon[$key]) ? saveFiles($request->more_specs_icon[$key], 'custom_specs_icon') : $request->old_more_specs_icon[$key]
+            ]);
+        }
         return json_encode([
             'error' => false,
             'message' => 'Project updated successfully'

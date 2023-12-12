@@ -52,7 +52,7 @@
                                             <div class="d-inline-flex gap-2">
                                                 <button data-bs-toggle="modal" data-bs-target="#edit-slider-modal"
                                                         type="button"
-                                                        onclick="setValues('{{$slider->id}}','{{$slider->heading}}','{{str_replace(["\r", "\n"], '', $slider->description)}}','{{!empty($slider->image) ? asset($slider->image) : 'https://via.placeholder.com/1000x1000'}}')"
+                                                        onclick="setValues('{{$slider->id}}','{{$slider->heading}}','{{str_replace(["\r", "\n"], '', $slider->description)}}','{{!empty($slider->image) ? asset($slider->image) : 'https://via.placeholder.com/1000x1000'}}','{{$slider->slider_link ?? ''}}','{{$slider->button_one_text ?? ''}}','{{$slider->button_one_link ?? ''}}','{{$slider->button_two_text ?? ''}}','{{$slider->button_two_link ?? ''}}')"
                                                         class="btn btn-warning btn-sm"><i class="ri ri-edit-2-line"></i>
                                                 </button>
                                                 <button type="button" onclick="deleteSlider('{{$slider->id}}',$(this))"
@@ -85,6 +85,10 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Slider Link</b></label>
+                            <input autocomplete="off" type="text" class="form-control" name="slider_link">
+                        </div>
+                        <div class="form-group mb-2">
                             <img id="previewSliderImg" onclick="$(this).next().click()"
                                  src="https://via.placeholder.com/1000x1000" style="height: 150px;
   width: 100%;
@@ -97,10 +101,26 @@
                             <label for="" class="mb-1"><b>Heading</b></label>
                             <input autocomplete="off" type="text" class="form-control" name="heading">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label for="" class="mb-1"><b>Description</b></label>
                             <textarea autocomplete="off" name="description" id="" class="form-control" cols="30"
                                       rows="02"></textarea>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button One Text</b></label>
+                            <input autocomplete="off" type="text" class="form-control" name="button_one_text">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button One link</b></label>
+                            <input autocomplete="off" type="text" class="form-control" name="button_one_link">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button Two Text</b></label>
+                            <input autocomplete="off" type="text" class="form-control" name="button_two_text">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button Two link</b></label>
+                            <input autocomplete="off" type="text" class="form-control" name="button_two_link">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -124,6 +144,11 @@
                     <input type="hidden" name="id" id="edit_id">
                     <div class="modal-body">
                         <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Slider Link</b></label>
+                            <input id="edit_slider_link" autocomplete="off" type="text" class="form-control"
+                                   name="slider_link">
+                        </div>
+                        <div class="form-group mb-2">
                             <img id="edit_img" onclick="$(this).next().click()"
                                  src="https://via.placeholder.com/1000x1000"
                                  style="height: 150px;width: 100%;object-fit: cover;" alt="">
@@ -140,6 +165,26 @@
                             <textarea autocomplete="off" name="description" id="edit_description" class="form-control"
                                       cols="30"
                                       rows="02"></textarea>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button One Text</b></label>
+                            <input id="edit_button_one_text" autocomplete="off" type="text" class="form-control"
+                                   name="button_one_text">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button One link</b></label>
+                            <input id="edit_button_one_link" autocomplete="off" type="text" class="form-control"
+                                   name="button_one_link">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button Two Text</b></label>
+                            <input id="edit_button_two_text" autocomplete="off" type="text" class="form-control"
+                                   name="button_two_text">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="" class="mb-1"><b>Button Two link</b></label>
+                            <input autocomplete="off" id="edit_button_two_link" type="text" class="form-control"
+                                   name="button_two_link">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -207,11 +252,16 @@
             });
         });
 
-        function setValues(id, heading, description, image) {
+        function setValues(id, heading, description, image, slider_link, button_one_text, button_one_link, button_two_text, button_two_link) {
             $('#edit_id').val(id);
             $('#edit_img').attr('src', image);
             $('#edit_heading').val(heading);
             $('#edit_description').text(description);
+            $('#edit_slider_link').val(slider_link);
+            $('#edit_button_one_text').val(button_one_text);
+            $('#edit_button_one_link').val(button_one_link);
+            $('#edit_button_two_text').val(button_two_text);
+            $('#edit_button_two_link').val(button_two_link);
         }
 
         $('#editSliderForm').on("submit", function (e) {
