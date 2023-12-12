@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blogs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,7 @@ class BlogsController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required'],
-            'short_description' => ['required','max:200'],
+            'short_description' => ['required', 'max:200'],
             'content' => ['required'],
             'image' => ['required'],
             'seo_title' => ['required'],
@@ -35,6 +36,7 @@ class BlogsController extends Controller
                 'seo_title' => $request->seo_title,
                 'seo_keywords' => $request->seo_keywords,
                 'seo_description' => $request->seo_description,
+                'created_at' => !empty($request->timestamp) ? Carbon::parse($request->timestamp) : now()
             ]);
 
 
@@ -66,6 +68,7 @@ class BlogsController extends Controller
             'seo_title' => ['required'],
             'seo_keywords' => ['required'],
             'seo_description' => ['required'],
+            'slug' => ['required', 'unique:blogs,slug,"' . $request->id . '"'],
         ]);
 
         if ($validated) {
@@ -75,11 +78,12 @@ class BlogsController extends Controller
                 'content' => $request['content'],
                 'seo_title' => $request->seo_title,
                 'seo_keywords' => $request->seo_keywords,
-                'seo_description' => $request->seo_description
+                'seo_description' => $request->seo_description,
+                'slug' => $request->slug
             ];
 
             if ($request->has('image')) {
-                $data['image'] = saveFiles($request->image, 'blog-images');
+                $data['image'] = saveFiles($request->image, 'blog - images');
             }
 
             $update = Blogs::where('id', $request->id)->update($data);

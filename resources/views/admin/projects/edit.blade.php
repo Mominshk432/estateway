@@ -160,8 +160,11 @@
                             </div>
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
                                         <h4 class="header-title">Specifications</h4>
+                                        <button onclick="addMoreSpecs()" class="btn btn-primary" type="button">Add
+                                            More
+                                        </button>
                                     </div>
                                     <div class="card-body">
                                         @csrf
@@ -195,6 +198,49 @@
                                                            placeholder="45 Lac" type="number"
                                                            class="form-control"
                                                            name="price">
+                                                </div>
+                                                @php
+                                                    $customSpecCount = 0;
+                                                @endphp
+                                                <div id="more_specifications">
+                                                    @if(count($project->custom_specs) > 0)
+                                                        @foreach($project->custom_specs as $customSpec)
+                                                            @php
+                                                                $customSpecCount = count($project->custom_specs);
+                                                            @endphp
+
+                                                            <div class="mb-3 d-flex align-items-center gap-2">
+                                                                <div>
+                                                                    <img onclick="$(this).next().click()"
+                                                                         id="more_specs-icon-{{$loop->index}}"
+                                                                         src="{{!empty($customSpec->icon) ? asset($customSpec->icon) : 'https://via.placeholder.com/1000x1000'}}"
+                                                                         style="height: 41px;width: 40px; object-fit: cover"
+                                                                         alt="">
+                                                                    <input
+                                                                        onchange="showSelectedImage($(this),'more_specs-icon-{{$loop->index}}');$(this).next().remove()"
+                                                                        type="file" class="d-none"
+                                                                        name="more_specs_icon[]">
+                                                                    <input value="{{$customSpec->icon ?? ''}}"
+                                                                           type="text" class="d-none"
+                                                                           name="old_more_specs_icon[]">
+                                                                </div>
+                                                                <div class="w-100">
+                                                                    <input value="{{$customSpec->title ?? ''}}"
+                                                                           type="text" name="more_specs_title[]"
+                                                                           placeholder="Title..."
+                                                                           class="form-control mb-2">
+                                                                    <input value="{{$customSpec->value ?? ''}}"
+                                                                           type="text" name="more_specs_value[]"
+                                                                           placeholder="Value..."
+                                                                           class="form-control">
+                                                                </div>
+                                                                <button type="button"
+                                                                        onclick="$(this).parent().remove()"
+                                                                        class="btn btn-danger btn-sm"><i
+                                                                        class="ri-delete-bin-2-line"></i></button>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -343,6 +389,37 @@
             `);
 
             imgCount++;
+        }
+
+        var moreSpecsCount = '{{$customSpecCount}}';
+
+        function addMoreSpecs() {
+            $('#more_specifications').append(`
+              <div class="mb-3 d-flex align-items-center gap-2">
+                                                        <div>
+                                                            <img onclick="$(this).next().click()" id="more_specs-icon-${moreSpecsCount}"
+                                                                 src="https://via.placeholder.com/1000x1000"
+                                                                 style="height: 41px;width: 40px; object-fit: cover"
+                                                                 alt="">
+                                                            <input
+                                                                onchange="showSelectedImage($(this),'more_specs-icon-${moreSpecsCount}')"
+                                                                type="file" class="d-none" name="more_specs_icon[]">
+
+                                                        </div>
+                                                        <div class="w-100">
+                                                            <input  type="text" name="more_specs_title[]"
+                                                                   placeholder="Title..."
+                                                                   class="form-control mb-2">
+                                                            <input  type="text" name="more_specs_value[]"
+                                                                   placeholder="Value..."
+                                                                   class="form-control">
+                                                        </div>
+                                                        <button type="button" onclick="$(this).parent().remove()"
+                                                                class="btn btn-danger btn-sm"><i
+                                                                class="ri-delete-bin-2-line"></i></button>
+                                                    </div>
+            `);
+            moreSpecsCount++;
         }
     </script>
 @endsection

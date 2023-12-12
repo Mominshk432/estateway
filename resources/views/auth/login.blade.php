@@ -34,7 +34,7 @@
                                     <a href="index.html" class="logo-light">
                                         <img style="height: 85px" src="{{asset('logo.png')}}" alt="logo">
                                     </a>
-                                    <a href="index.html" class="logo-dark">
+                                    <a href="index.html" class="logo-dark bg-black">
                                         <img style="height: 85px" src="{{asset('logo.png')}}" alt="dark logo"
                                         >
                                     </a>
@@ -61,10 +61,10 @@
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <a href="{{ route('password.request') }}"
-                                               class="text-muted float-end"><small>Forgot
-                                                    your
-                                                    password?</small></a>
+{{--                                            <a href="{{ route('password.request') }}"--}}
+{{--                                               class="text-muted float-end"><small>Forgot--}}
+{{--                                                    your--}}
+{{--                                                    password?</small></a>--}}
                                             <label for="password" class="form-label">Password</label>
                                             <input class="form-control @error('password') is-invalid @enderror"
                                                    type="password" name="password" required id="password"
@@ -107,7 +107,7 @@
 
 <footer class="footer footer-alt fw-medium">
         <span class="text-dark">
-            <script>document.write(new Date().getFullYear())</script> ©---
+            <script>document.write(new Date().getFullYear())</script> © Estateway
         </span>
 </footer>
 <!-- Vendor js -->

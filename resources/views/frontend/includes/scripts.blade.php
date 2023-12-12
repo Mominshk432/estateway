@@ -6,21 +6,7 @@
 <script src="{{asset('admin/assets/vendor/growl/jquery.growl.js')}}" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        let header = $('#header');
-        let headerOffSet = header.offset().top;
-        if ($(window).width() <= 992) {
-            header.addClass('sticky-header');
-            $('.main-slider-section').addClass('mt-110')
-        } else {
-            $(window).on('scroll', function () {
-                let scrollPosition = $(window).scrollTop();
-                if (scrollPosition >= headerOffSet) {
-                    header.addClass('sticky-header');
-                } else {
-                    header.removeClass('sticky-header');
-                }
-            })
-        }
+
         $('.toggle-btn').click(function () {
             $('.mobile-navigation').fadeIn();
         });

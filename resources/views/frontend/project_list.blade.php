@@ -20,6 +20,10 @@
 
         <div class="project-listing">
             <ul class="project-section">
+                <li>
+                    <a href="{{route('projects')}}"
+                       class="{{request('category') == null  ? 'active' : ''}}">All</a>
+                </li>
                 @if(count($categories) > 0)
                     @foreach($categories as $category)
                         <li>
@@ -101,6 +105,20 @@
                                         {{$project->size ?? '0'}} sq.ft.
                                     </p>
                                 </div>
+                                @if(count($project->custom_specs) > 0)
+                                    @foreach($project->custom_specs as $customSpec)
+                                        <div class="d-flex gap-2">
+                                            <img style="width: 21px;
+  height: 21px;
+  object-fit: contain;"
+                                                 src="{{!empty($customSpec->icon) ? asset($customSpec->icon) : 'https://via.placeholder.com/1000x1000'}}"
+                                                 alt="">
+                                            <p class="desc mb-0">
+                                                {{$customSpec->title ?? ''}}: {{$customSpec->value ?? ''}}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                             <a href="{{route('project.single',$project->slug)}}" class="btn btn-black mt-4">
                                 <span>Details</span>

@@ -30,4 +30,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectImages::class, 'project_id', 'id');
     }
+
+    public function custom_specs()
+    {
+        return $this->hasMany(CustomSpecs::class, 'project_id', 'id');
+    }
 }

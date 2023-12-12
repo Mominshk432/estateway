@@ -55,6 +55,20 @@
                                                    class="form-control">
                                         </div>
                                         <div class="mb-3">
+                                            <label for="simpleinput" class="form-label">Slug</label>
+                                            <input value="{{$blog->slug ?? ''}}" autocomplete="off"
+                                                   placeholder="Slug..." type="text"
+                                                   id="simpleinput" name="slug"
+                                                   class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="simpleinput" class="form-label">Slug</label>
+                                            <input value="{{$blog->created_at ?? ''}}" autocomplete="off"
+                                                   placeholder="Slug..." type="datetime-local"
+                                                   id="simpleinput" name="timestamp"
+                                                   class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="simpleinput" class="form-label">Content</label>
                                             <textarea autocomplete="off" class="form-control" name="content"
                                                       id="blog_content" cols="30"
@@ -159,7 +173,7 @@
                         $.growl.notice({message: res.message});
 
                         setTimeout(function () {
-                            window.location.reload();
+                            window.location.href='{{route('admin.blogs.list')}}';
                         }, 1000);
                     } else {
                         $.growl.error({message: res.message});

@@ -16,7 +16,9 @@
     <div class="carousel-inner">
         @if(count($banners) > 0)
             @foreach($banners as $banner)
-                <div class="carousel-item active">
+                <div
+                    onclick="window.location.href='{{!empty($banner->slider_link) ? $banner->slider_link : 'javascript:void(0)'}}'"
+                    class="carousel-item active">
                     <div class="main-slide"
                          style="background-image: url({{asset($banner->image)}})">
                         <div class="slide-content">
@@ -29,17 +31,23 @@
                                 </h5>
                                 <div
                                     class="d-flex justify-content-between gap-0 gap-sm-4 justify-content-sm-center mt-3 mt-sm-5">
-                                    <a href="{{route('projects')}}" class="btn btn-yellow">
-                                        <span>Learn More</span> <img
-                                            src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                            class="right-arrow"
-                                            alt="">
-                                    </a>
-                                    <a href="{{route('contact')}}" class="btn btn-white">
-                                        <span>Enquire Now</span> <img
-                                            src="{{asset('frontend/assets/images/arrow-right-black.svg')}}"
-                                            class="right-arrow" alt="">
-                                    </a>
+                                    @if(!empty($banner->button_one_text))
+                                        <a href="{{$banner->button_one_link}}"
+                                           class="btn btn-yellow">
+                                            <span>{{$banner->button_one_text}}</span> <img
+                                                src="{{asset('frontend/assets/images/arrow-right.svg')}}"
+                                                class="right-arrow"
+                                                alt="">
+                                        </a>
+                                    @endif
+                                    @if(!empty($banner->button_two_text))
+                                        <a href="{{$banner->button_two_link ?? 'javascript:void(0)'}}"
+                                           class="btn btn-white">
+                                            <span>{{$banner->button_two_text ?? ''}}</span> <img
+                                                src="{{asset('frontend/assets/images/arrow-right-black.svg')}}"
+                                                class="right-arrow" alt="">
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -503,5 +511,24 @@
 </div>
 @include('frontend.includes.footer')
 @include('frontend.includes.scripts')
+<script>
+    $(document).ready(function () {
+        let header = $('#header');
+        let headerOffSet = header.offset().top;
+        if ($(window).width() <= 992) {
+            header.addClass('sticky-header');
+            $('.main-slider-section').addClass('mt-110')
+        } else {
+            $(window).on('scroll', function () {
+                let scrollPosition = $(window).scrollTop();
+                if (scrollPosition >= headerOffSet) {
+                    header.addClass('sticky-header');
+                } else {
+                    header.removeClass('sticky-header');
+                }
+            })
+        }
+    });
+</script>
 </body>
 </html>

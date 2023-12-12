@@ -52,6 +52,13 @@
                                                    class="form-control">
                                         </div>
                                         <div class="mb-3">
+                                            <label for="simpleinput" class="form-label">Datetime</label>
+                                            <input autocomplete="off" placeholder="Short Description..."
+                                                   type="datetime-local"
+                                                   id="simpleinput" name="timestamp"
+                                                   class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="simpleinput" class="form-label">Content</label>
                                             <textarea autocomplete="off" class="form-control" name="content"
                                                       id="blog_content" cols="30"
@@ -93,7 +100,8 @@
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label for="simpleinput" class="form-label">Seo Description</label>
-                                                    <textarea autocomplete="off" name="seo_description" id="" cols="30" rows="03"
+                                                    <textarea autocomplete="off" name="seo_description" id="" cols="30"
+                                                              rows="03"
                                                               class="form-control"></textarea>
                                                 </div>
                                             </div>

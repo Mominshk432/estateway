@@ -78,6 +78,20 @@
                                 {{$project->size ?? ''}} sq.ft.
                             </p>
                         </div>
+                        @if(count($project->custom_specs) > 0)
+                            @foreach($project->custom_specs as $customSpec)
+                                <div class="d-flex my-3 my-sm-0 gap-2 align-items-center">
+                                    <img style="width: 21px;
+  height: 21px;
+  object-fit: contain;"
+                                         src="{{!empty($customSpec->icon) ? asset($customSpec->icon) : 'https://via.placeholder.com/1000x1000'}}"
+                                         alt="">
+                                    <p class="desc mb-0">
+                                        {{$customSpec->title ?? ''}}: {{$customSpec->value ?? ''}}
+                                    </p>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="d-flex gap-3">
                         <button class="btn project-add">
