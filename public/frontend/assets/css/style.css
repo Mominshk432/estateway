@@ -44,7 +44,7 @@
     transition: all .5s;
     left: 50%;
     transform: translateX(-50%);
-    top: 110%;
+    top: 82px;
 }
 
 .search-sec {
