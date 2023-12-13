@@ -53,12 +53,17 @@
                                 </div>
                                 <h4 class="my-3 fw-semibold-custom">{{$blog->title ?? ''}}</h4>
                                 <p class="desc">{{!empty($blog->short_description) ? \Illuminate\Support\Str::limit($blog->short_description,300) : ''}}</p>
-                                <a href="{{route('blogs.single',$blog->slug)}}" class="bg-black p-2 text-decoration-none text-white w-100 d-block rounded-1">
-                                    <span>Read More</span><span class="float-end"><img
+                                <div class="bg-black p-3 d-flex justify-content-between py-2 rounded-1">
+                                    <p class="text-white mb-0"><a class="blog "
+                                                                  href="{{route('blogs.single',$blog->slug)}}">Read
+                                            More</a>
+                                    </p>
+                                    <button class="btn p-0"><img
                                             src="{{asset('frontend/assets/images/arrow-right.svg')}}"
                                             class="arrow-width"
-                                            alt=""></span>
-                                </a>
+                                            alt="">
+                                    </button>
+                                </div>
                             </div>
                         @endforeach
                     @endif
