@@ -1,9 +1,17 @@
 <!doctype html>
 <html lang="en">
 @include('frontend.includes.head')
+@if(!empty($seo))
+
+    <title>{{$seo->seo_title}}</title>
+    <meta name="keywords" content="{{convertKeyword($seo->seo_keywords)}}">
+    <meta name="description" content="{{ $seo->seo_description }}">
+
+@endif
 <body>
 @include('frontend.includes.mobile-nav')
-<div id="carouselExampleIndicators" class="carousel slide main-slider-section" data-bs-ride="carousel" data-bs-pause="false">
+<div id="carouselExampleIndicators" class="carousel slide main-slider-section" data-bs-ride="carousel"
+     data-bs-pause="false">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -35,8 +43,8 @@
                                         <a href="{{$banner->button_one_link}}"
                                            class="btn btn-yellow">
                                             <span>{{$banner->button_one_text}}</span> <img
-                                                src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                                class="right-arrow"
+                                                data-src="{{asset('frontend/assets/images/arrow-right.svg')}}"
+                                                class="right-arrow lazy"
                                                 alt="">
                                         </a>
                                     @endif
@@ -44,8 +52,8 @@
                                         <a href="{{$banner->button_two_link ?? 'javascript:void(0)'}}"
                                            class="btn btn-white">
                                             <span>{{$banner->button_two_text ?? ''}}</span> <img
-                                                src="{{asset('frontend/assets/images/arrow-right-black.svg')}}"
-                                                class="right-arrow" alt="">
+                                                data-src="{{asset('frontend/assets/images/arrow-right-black.svg')}}"
+                                                class="right-arrow lazy" alt="">
                                         </a>
                                     @endif
                                 </div>
@@ -60,8 +68,9 @@
 @include('frontend.includes.header')
 <!--about us-->
 <div class="aboutMe">
-    <img src="{{asset('frontend/assets/images/about-me.svg')}}" class="w-100 d-none d-sm-block" alt="">
-    <img src="{{asset('frontend/assets/images/about-ms-sm.svg')}}" class="w-100 w-100 d-block d-sm-none" alt="">
+    <img data-src="{{asset('frontend/assets/images/about-me.svg')}}" class="w-100 d-none d-sm-block lazy" alt="">
+    <img data-src="{{asset('frontend/assets/images/about-ms-sm.svg')}}" class="w-100 w-100 d-block d-sm-none lazy"
+         alt="">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -75,7 +84,8 @@
                     <div class="row position-relative z-1 mb-5">
                         <div class="col-md-4 border px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project1.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project1.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>Dwarka Expressway Projects</h4>
@@ -86,7 +96,8 @@
                         </div>
                         <div class="col-md-4 border px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project2.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project2.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>Golf Course Extension Road Projects</h4>
@@ -97,7 +108,8 @@
                         </div>
                         <div class="col-md-4 border px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project3.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project3.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>New Gurgaon (NH-8) Projects</h4>
@@ -110,7 +122,8 @@
                     <div class="row position-relative z-1 mt-10">
                         <div class="col-md-4 px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project4.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project4.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>Southern Peripheral Road Projects</h4>
@@ -121,7 +134,8 @@
                         </div>
                         <div class="col-md-4 px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project5.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project5.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>Dwarka Expressway Projects</h4>
@@ -132,7 +146,8 @@
                         </div>
                         <div class="col-md-4 px-sm-0">
                             <div class="position-relative small-card">
-                                <img src="{{asset('frontend/assets/images/projects/project6.svg')}}" alt="">
+                                <img class="lazy" data-src="{{asset('frontend/assets/images/projects/project6.svg')}}"
+                                     alt="">
                                 <div class="project-content">
                                     <div class="project-inner-content">
                                         <h4>Dwarka Expressway Projects</h4>
@@ -143,7 +158,8 @@
                         </div>
                     </div>
                     <div class="project-bg">
-                        <img src="{{asset('frontend/assets/images/projects/project-bg.svg')}}" class="w-100" alt="">
+                        <img src="{{asset('frontend/assets/images/projects/project-bg.svg')}}" class="w-100 "
+                             alt="">
                     </div>
                 </div>
             </div>
@@ -174,14 +190,17 @@
                                 <div class="card border-transparent shadow p-0 bg-card">
                                     <div class="card-header position-relative p-0">
                                         <img
-                                            src="{{!empty($project->images[0]) ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="w-100 h-220"
+                                            data-src="{{!empty($project->images[0]) ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                            class="w-100 h-220 lazy"
                                             alt="">
                                         <div class="card-inner-section">
-                                            <p class="bg-yellow">Ready to move</p>
+                                            @if(!empty($project->getStatus))
+                                                <p class="bg-yellow">{{$project->getStatus->title ?? ''}}</p>
+                                            @endif
                                             <div class="d-flex">
                                                 <button class="btn btn-heart me-2"><img
-                                                        src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                        class="lazy"
+                                                        data-src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
                                                 </button>
                                                 <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i>
                                                 </button>
@@ -191,8 +210,8 @@
                                     <div class="card-body p-0">
                                         <div
                                             class="d-flex justify-content-end border-bottom align-items-center border-black border-opacity-75 mx-3">
-                                    <span><img src="{{asset('frontend/assets/images/sign.svg')}}" height="16"
-                                               class="me-1" alt=""></span><span
+                                    <span><img data-src="{{asset('frontend/assets/images/sign.svg')}}" height="16"
+                                               class="me-1 lazy" alt=""></span><span
                                                 class="fw-500 fs-5">{{$project->price ?? '0'}} Onwards</span>
                                         </div>
                                         <div class="my-3 px-3">
@@ -230,27 +249,30 @@
                             Axiom Landbase can match you with a house you will want to call home.</p>
                     </div>
                     <div class="contact-2">
-                        <img src="{{asset('frontend/assets/images/home.svg')}}" class="w-100" alt="">
+                        <img data-src="{{asset('frontend/assets/images/home.svg')}}" class="w-100 lazy" alt="">
                     </div>
                     <div class="contact-3">
                         <div
                             class="d-flex gap-3 align-items-center justify-content-between justify-content-start ps-0 ps-sm-2 py-4 border-bottom border-black border-opacity-50">
-                            <img src="{{asset('frontend/assets/images/icon.svg')}}" width="30" alt="">
+                            <img class="lazy" data-src="{{asset('frontend/assets/images/icon.svg')}}" width="30" alt="">
                             <p class="mb-0">24/7 Power Backup</p>
                         </div>
                         <div
                             class="d-flex gap-3 align-items-center justify-content-between justify-content-start ps-0 ps-sm-2 py-4 border-bottom border-black border-opacity-50">
-                            <img src="{{asset('frontend/assets/images/icon2.svg')}}" width="30" alt="">
+                            <img class="lazy" data-src="{{asset('frontend/assets/images/icon2.svg')}}" width="30"
+                                 alt="">
                             <p class="mb-0">Car Parking</p>
                         </div>
                         <div
                             class="d-flex gap-3 align-items-center justify-content-between justify-content-start ps-0 ps-sm-2 py-4 border-bottom border-black border-opacity-50">
-                            <img src="{{asset('frontend/assets/images/icon3.svg')}}" width="30" alt="">
+                            <img class="lazy" data-src="{{asset('frontend/assets/images/icon3.svg')}}" width="30"
+                                 alt="">
                             <p class="mb-0">Fire Extinguishers</p>
                         </div>
                         <div
                             class="d-flex gap-3 align-items-center justify-content-between justify-content-start ps-0 ps-sm-2 py-4">
-                            <img src="{{asset('frontend/assets/images/icon4.svg')}}" width="30" alt="">
+                            <img class="lazy" data-src="{{asset('frontend/assets/images/icon4.svg')}}" width="30"
+                                 alt="">
                             <p class="mb-0">Safety and Security</p>
                         </div>
                         <div>
@@ -260,7 +282,7 @@
                         </div>
                     </div>
                     <div class="contact-bg">
-                        <img src="{{asset('frontend/assets/images/conact-bg.svg')}}" alt="">
+                        <img class="lazy" data-src="{{asset('frontend/assets/images/conact-bg.svg')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -283,12 +305,15 @@
                                     Haryana 122004</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100 h-220" alt="">
+                                <img data-src="{{asset('frontend/assets/images/sp-light-item1.svg')}}"
+                                     class="w-100 h-220 lazy"
+                                     alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
                                     </div>
@@ -297,15 +322,15 @@
                             <div class="card-body p-0">
                                 <div
                                     class="d-flex justify-content-end border-bottom align-items-center border-white mb-2 border-opacity-75">
-                                    <span><img src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
-                                               class="me-1"
+                                    <span><img data-src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
+                                               class="me-1 lazy"
                                                alt=""></span><span class="fw-500 fs-5 text-theme-light">6 Lakh per sq. yds</span>
                                 </div>
                                 <div class="bg-black px-3 d-flex justify-content-between py-2 mb-3">
                                     <p class="text-white mb-0">Details</p>
                                     <button class="btn p-0"><img
                                             src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                            class="arrow-width"
+                                            class="arrow-width "
                                             alt=""></button>
                                 </div>
                             </div>
@@ -318,12 +343,15 @@
                                 <p class="text-theme-soft-light">Sector 93, Gurugram, <br>Haryana, India</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100 h-220" alt="">
+                                <img data-src="{{asset('frontend/assets/images/sp-light-item2.svg')}}"
+                                     class="w-100 h-220 lazy"
+                                     alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
                                     </div>
@@ -332,15 +360,15 @@
                             <div class="card-body p-0">
                                 <div
                                     class="d-flex justify-content-end border-bottom align-items-center border-white mb-2 border-opacity-75">
-                                    <span><img src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
-                                               class="me-1"
+                                    <span><img data-src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
+                                               class="me-1 lazy"
                                                alt=""></span><span class="fw-500 fs-5 text-theme-light">Rs.83.48 Lac Onwards*</span>
                                 </div>
                                 <div class="bg-black px-3 d-flex justify-content-between py-2 mb-3">
                                     <p class="text-white mb-0">Details</p>
                                     <button class="btn p-0"><img
                                             src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                            class="arrow-width"
+                                            class="arrow-width "
                                             alt=""></button>
                                 </div>
                             </div>
@@ -354,12 +382,15 @@
                                     Haryana 122004</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item1.svg')}}" class="w-100 h-220" alt="">
+                                <img data-src="{{asset('frontend/assets/images/sp-light-item1.svg')}}"
+                                     class="w-100 h-220 lazy"
+                                     alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
                                     </div>
@@ -368,15 +399,15 @@
                             <div class="card-body p-0">
                                 <div
                                     class="d-flex justify-content-end border-bottom align-items-center border-white mb-2 border-opacity-75">
-                                    <span><img src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
-                                               class="me-1"
+                                    <span><img data-src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
+                                               class="me-1 lazy"
                                                alt=""></span><span class="fw-500 fs-5 text-theme-light">6 Lakh per sq. yds</span>
                                 </div>
                                 <div class="bg-black px-3 d-flex justify-content-between py-2 mb-3">
                                     <p class="text-white mb-0">Details</p>
                                     <button class="btn p-0"><img
                                             src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                            class="arrow-width"
+                                            class="arrow-width "
                                             alt=""></button>
                                 </div>
                             </div>
@@ -389,12 +420,15 @@
                                 <p class="text-theme-soft-light">Sector 93, Gurugram, <br>Haryana, India</p>
                             </div>
                             <div class="card-header position-relative p-0">
-                                <img src="{{asset('frontend/assets/images/sp-light-item2.svg')}}" class="w-100 h-220" alt="">
+                                <img data-src="{{asset('frontend/assets/images/sp-light-item2.svg')}}"
+                                     class="w-100 h-220 lazy"
+                                     alt="">
                                 <div class="card-inner-section">
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
                                     </div>
@@ -403,15 +437,15 @@
                             <div class="card-body p-0">
                                 <div
                                     class="d-flex justify-content-end border-bottom align-items-center border-white mb-2 border-opacity-75">
-                                    <span><img src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
-                                               class="me-1"
+                                    <span><img data-src="{{asset('frontend/assets/images/sign-light.svg')}}" height="16"
+                                               class="me-1 lazy"
                                                alt=""></span><span class="fw-500 fs-5 text-theme-light">Rs.83.48 Lac Onwards*</span>
                                 </div>
                                 <div class="bg-black px-3 d-flex justify-content-between py-2 mb-3">
                                     <p class="text-white mb-0">Details</p>
                                     <button class="btn p-0"><img
                                             src="{{asset('frontend/assets/images/arrow-right.svg')}}"
-                                            class="arrow-width"
+                                            class="arrow-width "
                                             alt=""></button>
                                 </div>
                             </div>
@@ -479,8 +513,8 @@
                                 <div class="card border-transparent shadow p-0 bg-card">
                                     <div class="card-header position-relative p-0">
                                         <img
-                                            src="{{!empty($blog->image) ? asset($blog->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="w-100 h-220" alt="">
+                                            data-src="{{!empty($blog->image) ? asset($blog->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                            class="w-100 h-220 lazy" alt="">
                                     </div>
                                     <div class="card-body p-0">
                                         <div

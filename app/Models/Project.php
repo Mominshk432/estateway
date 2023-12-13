@@ -35,4 +35,9 @@ class Project extends Model
     {
         return $this->hasMany(CustomSpecs::class, 'project_id', 'id');
     }
+
+    public function getStatus()
+    {
+        return $this->hasOne(ProjectStatuses::class, 'id', 'status');
+    }
 }

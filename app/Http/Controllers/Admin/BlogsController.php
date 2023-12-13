@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blogs;
+use App\Models\SeoSettings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -102,5 +103,12 @@ class BlogsController extends Controller
             'error' => false,
             'message' => 'Blog deleted successfully'
         ]);
+    }
+
+    public function getBlogPageSeoSettings()
+    {
+        $seoSetting = SeoSettings::where('page', 'blogs')->first();
+        return view('admin.blogs.seo-settings', compact('seoSetting'));
+
     }
 }

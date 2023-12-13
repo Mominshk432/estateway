@@ -81,7 +81,7 @@
             </div>
             <!-- end row -->
 
-
+            @include('admin.includes.seo_settings',['page' => 'contact','settings' => $seoSetting])
         </div> <!-- container -->
 
     </div>

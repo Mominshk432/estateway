@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blogs;
+use App\Models\SeoSettings;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -11,7 +12,8 @@ class BlogsController extends Controller
     {
         $blogs = Blogs::latest()->paginate(10);
         $recent_posts = Blogs::latest()->take(3)->get();
-        return view('frontend.blogs', compact('blogs', 'recent_posts'));
+        $seo = SeoSettings::where('page', 'blogs')->first();
+        return view('frontend.blogs', compact('blogs', 'recent_posts', 'seo'));
     }
 
     public function blog_single($blogSlug)

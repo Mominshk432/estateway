@@ -2,6 +2,13 @@
 @section('title')
     Blogs
 @endsection
+@if(!empty($seo))
+    @section('seo')
+        <title>{{$seo->seo_title}}</title>
+        <meta name="keywords" content="{{convertKeyword($seo->seo_keywords)}}">
+        <meta name="description" content="{{ $seo->seo_description }}">
+    @endsection
+@endif
 @section('body')
     <div style="background: rgba(230, 231, 233, 1)!important;">
         <div class="contact-main mt-110">

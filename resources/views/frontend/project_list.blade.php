@@ -2,6 +2,13 @@
 @section('title')
     Projects
 @endsection
+@if(!empty($seo))
+    @section('seo')
+        <title>{{$seo->seo_title}}</title>
+        <meta name="keywords" content="{{convertKeyword($seo->seo_keywords)}}">
+        <meta name="description" content="{{ $seo->seo_description }}">
+    @endsection
+@endif
 @section('body')
     <div class="project-main mt-110">
         <div class="container">
@@ -13,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <img src="{{asset('frontend/assets/images/banner-main.svg')}}" class="w-100" alt="">
+                    <img data-src="{{asset('frontend/assets/images/banner-main.svg')}}" class="w-100 lazy" alt="">
                 </div>
             </div>
         </div>
@@ -62,11 +69,13 @@
                     <div class="row align-items-center py-5">
                         <div class="col-md-4">
                             <div class="project-img">
-                                <img
-                                    src="{{!empty($project->images[0]->image)  ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000' }}"
+                                <img class="lazy"
+                                    data-src="{{!empty($project->images[0]->image)  ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000' }}"
                                     alt="">
                                 <div class="project-absolute">
-                                    <p class="bg-yellow">Ready to move</p>
+                                    @if(!empty($project->getStatus))
+                                        <p class="bg-yellow">{{$project->getStatus->title ?? ''}}</p>
+                                    @endif
                                     <div class="d-flex gap-3">
                                         <button class="btn project-add">
                                             <i class="bi bi-heart"></i>
@@ -82,7 +91,7 @@
                             <div class="project-title">
                                 <h5 class="my-2 my-md-0">{{$project->heading ?? ''}}</h5>
                                 <h5 class="d-flex my-2 align-items-center gap-2 justify-content-end"><img
-                                        src="{{asset('frontend/assets/images/sign.svg')}}" width="18" alt=""><span>{{$project->price ?? '0'}} . Onwards</span>
+                                       class="lazy" data-src="{{asset('frontend/assets/images/sign.svg')}}" width="18" alt=""><span>{{$project->price ?? '0'}} . Onwards</span>
                                 </h5>
                             </div>
                             <p class="desc my-3">{{$project->address ?? ''}}</p>

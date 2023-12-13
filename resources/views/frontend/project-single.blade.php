@@ -2,7 +2,15 @@
 @section('title')
     Project
 @endsection
+@if(!empty($seo))
+    @section('seo')
+        <title>{{$project->seo_title}}</title>
+        <meta name="keywords" content="{{convertKeyword($project->seo_keywords)}}">
+        <meta name="description" content="{{ $project->seo_description }}">
+    @endsection
+@endif
 @section('body')
+
     <div class="mt-110">
         <div class="container project-detail-main"
              style="background-image: url({{asset('frontend/assets/images/project-details-banner.svg')}});">
@@ -16,7 +24,8 @@
                 </div>
                 <div class="col-md-6">
                     <h5 class="badge-yellow ms-auto">
-                        <img src="{{asset('frontend/assets/images/rupee-svgrepo-com.svg')}}" width="24" alt="img">
+                        <img class="lazy" data-src="{{asset('frontend/assets/images/rupee-svgrepo-com.svg')}}"
+                             width="24" alt="img">
                         <span>{{$project->price ?? '0'}}. Onward</span>
                     </h5>
                 </div>
@@ -33,8 +42,8 @@
                                 @if(count($project->images) > 0)
                                     @foreach($project->images as $image)
                                         <div><img
-                                                src="{{!empty($image->image) ? asset($image->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                                class="slider-nav-img"
+                                                data-src="{{!empty($image->image) ? asset($image->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                                class="slider-nav-img lazy"
                                                 alt="Image 1">
                                         </div>
                                     @endforeach
@@ -47,8 +56,8 @@
                             @if(count($project->images) > 0)
                                 @foreach($project->images as $image)
                                     <div><img
-                                            src="{{!empty($image->image) ? asset($image->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                            class="slider-img" alt="Image 1">
+                                            data-src="{{!empty($image->image) ? asset($image->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                            class="slider-img lazy" alt="Image 1">
                                     </div>
                                 @endforeach
                             @endif
@@ -202,10 +211,12 @@
                                     <div class="item">
                                         <div class="card border-transparent shadow p-0 bg-card">
                                             <div class="card-header position-relative p-0">
-                                                <img src="{{!empty($otherProject->images[0]->image) ? asset($otherProject->images[0]->image) : 'https://via.placeholder.com/1000x1000
-                                                '}}" class="w-100 h-220" alt="img">
+                                                <img data-src="{{!empty($otherProject->images[0]->image) ? asset($otherProject->images[0]->image) : 'https://via.placeholder.com/1000x1000
+                                                '}}" class="w-100 h-220 lazy" alt="img">
                                                 <div class="card-inner-section">
-                                                    <p class="bg-yellow">Ready to move</p>
+                                                    @if(!empty($project->getStatus))
+                                                        <p class="bg-yellow">{{$project->getStatus->title ?? ''}}</p>
+                                                    @endif
                                                     <div class="d-flex">
                                                         <button class="btn btn-heart me-2"><img
                                                                 src="{{asset('frontend/assets/images/heart.svg')}}"

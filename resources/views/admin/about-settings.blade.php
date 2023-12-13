@@ -297,7 +297,7 @@
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
-
+            @include('admin.includes.seo_settings',['page' => 'about','settings' => $seoSetting])
 
         </div> <!-- container -->
 

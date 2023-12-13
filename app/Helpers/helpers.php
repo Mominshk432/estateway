@@ -12,3 +12,21 @@ function saveFiles($file, $path)
 
     return $FileName;
 }
+
+function convertKeyword($data)
+{
+
+    if (!empty($data)) {
+        if (is_array($data)) {
+            $keywords_array = $data;
+        } else {
+            $keywords_array = json_decode($data);
+        }
+        $final_array = [];
+        foreach ($keywords_array as $keyword) {
+
+            $final_array[] = $keyword->value;
+        }
+        return implode(',', $final_array);
+    }
+}

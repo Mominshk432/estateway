@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\SeoSettings;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -18,13 +19,17 @@ class ProjectController extends Controller
         }
         $categories = Category::latest()->get();
         $projects = $projects->latest()->paginate(10);
-        return view('frontend.project_list', compact('projects', 'categories'));
+        $seo = SeoSettings::where('page', 'blogs')->first();
+        return view('frontend.project_list', compact('projects', 'categories', 'seo'));
     }
 
     public function project_single($projectSlug)
     {
         $project = Project::where('slug', $projectSlug)->first();
         $otherProjects = Project::latest()->get();
-        return view('frontend.project-single', compact('project', 'otherProjects'));
+        $seo = SeoSettings::where('page', 'blogs')->first();
+        return view('frontend.project-single', compact('project', 'otherProjects', 'seo'));
     }
+
+
 }

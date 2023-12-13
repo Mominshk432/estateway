@@ -53,13 +53,27 @@
                                                    class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 mb-3">
                                         <div class="form-group">
                                             <label for="simpleinput" class="form-label">Description</label>
                                             <textarea autocomplete="off" placeholder="Description..." name="description"
                                                       id="" cols="30"
                                                       rows="03"
                                                       class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="simpleinput" class="form-label">Status</label>
+                                            <select name="status" id="" class="form-control">
+                                                <option selected disabled readonly="">--Select--</option>
+                                                @if(count($statuses) > 0)
+                                                    @foreach($statuses as $status)
+                                                        <option
+                                                            value="{{$status->id}}">{{$status->title ?? ''}}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -225,6 +239,46 @@
                         </div>
                     </div>
                 </div><!-- end row -->
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Seo Settings</h4>
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="" class="mb-1"><b>Seo Title</b></label>
+                                            <input autocomplete="off" value=""
+                                                   placeholder="Seo Title" type="text"
+                                                   class="form-control"
+                                                   name="seo_title">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="" class="mb-1"><b>Seo keywords</b></label>
+                                            <input autocomplete="off" value=""
+                                                   placeholder="Seo Keywords"
+                                                   id="seoTags" type="text"
+                                                   class="form-control"
+                                                   name="seo_keywords">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="" class="mb-1"><b>Seo Description</b></label>
+                                            <textarea autocomplete="off" placeholder="Seo Description"
+                                                      class="form-control"
+                                                      name="seo_description" id="" cols="05"
+                                                      rows="05"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row my-2">
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary submitBtn">Save</button>

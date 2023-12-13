@@ -2,6 +2,13 @@
 @section('title')
     Contact Us
 @endsection
+@if(!empty($seo))
+    @section('seo')
+        <title>{{$seo->seo_title}}</title>
+        <meta name="keywords" content="{{convertKeyword($seo->seo_keywords)}}">
+        <meta name="description" content="{{ $seo->seo_description }}">
+    @endsection
+@endif
 @section('body')
     <div class="contact-main mt-110">
         <div class="container">

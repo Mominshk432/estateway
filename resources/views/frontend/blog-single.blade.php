@@ -2,6 +2,13 @@
 @section('title')
     Blog
 @endsection
+
+@section('seo')
+    <title>{{$blog->seo_title ?? ''}}</title>
+    <meta name="keywords" content="{{!empty($blog->seo_keywords) ? convertKeyword($blog->seo_keywords) : ''}}">
+    <meta name="description" content="{{ $blog->seo_description ?? ''}}">
+@endsection
+
 @section('body')
     <div style="background: rgba(230, 231, 233, 1)!important;">
         <div class="property-text">

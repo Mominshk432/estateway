@@ -58,4 +58,62 @@
         reader.readAsDataURL(file);
 
     }
+
+    $('#seo_setting_form').on("submit", function (e) {
+        e.preventDefault()
+        var form = $('#seo_setting_form')[0];
+        var formdata = new FormData(form);
+        $('.seoSubmitBtn').html('<span class="me-2"><i class="fa fa-spinner fa-spin"></i></span> Processing');
+        $('.seoSubmitBtn').prop('disabled', true);
+        $.ajax({
+            type: 'POST',
+            url: '{{route('admin.saveSeoSetting')}}',
+            dataType: 'json',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            cache: false,
+            mimeType: 'multipart/form-data',
+
+            success: function (res) {
+                if (res.error == false) {
+                    $.growl.notice({message: res.message});
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    $.growl.error({message: res.message});
+                }
+                $('.seoSubmitBtn').html('Save');
+                $('.seoSubmitBtn').prop('disabled', false);
+
+            },
+            error: function (e) {
+
+                var first_error = '';
+                var count = 0;
+
+                $.each(e.responseJSON.errors, function (index, item) {
+
+                    if (count == 0) {
+                        first_error = item[0];
+                    }
+
+                    count++;
+                });
+                $.growl.error({message: first_error});
+
+                $('.seoSubmitBtn').html('Save');
+                $('.seoSubmitBtn').prop('disabled', false);
+
+            }
+
+        });
+    });
+
+    // The DOM element you wish to replace with Tagify
+    var input = document.getElementById('seoTags');
+    // initialize Tagify on the above input node reference
+    new Tagify(input)
+
 </script>

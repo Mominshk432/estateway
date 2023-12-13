@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\CustomSpecs;
 use App\Models\Project;
 use App\Models\ProjectImages;
+use App\Models\ProjectStatuses;
+use App\Models\SeoSettings;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -14,17 +16,17 @@ class ProjectsController extends Controller
     public function add()
     {
         $categories = Category::latest()->get();
-        return view('admin.projects.add', compact('categories'));
+        $statuses = ProjectStatuses::latest()->get();
+        return view('admin.projects.add', compact('categories', 'statuses'));
     }
 
     public function store(Request $request)
     {
-
-
         $validated = $request->validate([
             'heading' => ['required'],
             'address' => ['required'],
             'description' => ['required'],
+            'status' => ['required'],
             'highlights' => ['required'],
             'amenities' => ['required'],
             'category' => ['required'],
@@ -34,7 +36,10 @@ class ProjectsController extends Controller
             'size' => ['required', 'integer'],
             'google_map' => ['required'],
             'image' => ['required'],
-            'site_plan' => ['required']
+            'site_plan' => ['required'],
+            'seo_title' => ['required'],
+            'seo_description' => ['required'],
+            'seo_keywords' => ['required'],
         ]);
         if ($request->has('more_specs_title')) {
             foreach ($request->more_specs_title as $key => $item) {
@@ -63,6 +68,7 @@ class ProjectsController extends Controller
                 'heading' => $request->heading,
                 'address' => $request->address,
                 'description' => $request->description,
+                'status' => $request->status,
                 'highlights' => $request->highlights,
                 'amenities' => $request->amenities,
                 'category_id' => $request->category,
@@ -72,6 +78,9 @@ class ProjectsController extends Controller
                 'size' => $request->size,
                 'google_map' => $request->google_map,
                 'site_plan' => saveFiles($request->site_plan, 'project-site-plans'),
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'seo_keywords' => $request->seo_keywords,
             ]);
 
             if ($request->has('image')) {
@@ -82,14 +91,16 @@ class ProjectsController extends Controller
                     ]);
                 }
             }
+            if ($request->has('more_specs_title')) {
 
-            foreach ($request->more_specs_title as $key => $item) {
-                $create = CustomSpecs::create([
-                    'project_id' => $store->id,
-                    'title' => $item,
-                    'value' => $request->more_specs_value[$key],
-                    'icon' => saveFiles($request->more_specs_icon[$key], 'custom_specs_icon')
-                ]);
+                foreach ($request->more_specs_title as $key => $item) {
+                    $create = CustomSpecs::create([
+                        'project_id' => $store->id,
+                        'title' => $item,
+                        'value' => $request->more_specs_value[$key],
+                        'icon' => saveFiles($request->more_specs_icon[$key], 'custom_specs_icon')
+                    ]);
+                }
             }
 
             return json_encode([
@@ -109,7 +120,8 @@ class ProjectsController extends Controller
     {
         $project = Project::where('slug', $slug)->first();
         $categories = Category::latest()->get();
-        return view('admin.projects.edit', compact('project', 'categories'));
+        $statuses = ProjectStatuses::latest()->get();
+        return view('admin.projects.edit', compact('project', 'categories', 'statuses'));
     }
 
     public function update(Request $request)
@@ -120,6 +132,7 @@ class ProjectsController extends Controller
             'heading' => ['required'],
             'address' => ['required'],
             'description' => ['required'],
+            'status' => ['required'],
             'highlights' => ['required'],
             'amenities' => ['required'],
             'category' => ['required'],
@@ -128,6 +141,9 @@ class ProjectsController extends Controller
             'price' => ['required', 'integer'],
             'size' => ['required', 'integer'],
             'google_map' => ['required'],
+            'seo_title' => ['required'],
+            'seo_description' => ['required'],
+            'seo_keywords' => ['required'],
         ]);
         if ($request->has('more_specs_title')) {
             foreach ($request->more_specs_title as $key => $item) {
@@ -168,6 +184,7 @@ class ProjectsController extends Controller
                 'heading' => $request->heading,
                 'address' => $request->address,
                 'description' => $request->description,
+                'status' => $request->status,
                 'highlights' => $request->highlights,
                 'amenities' => $request->amenities,
                 'category_id' => $request->category,
@@ -176,6 +193,9 @@ class ProjectsController extends Controller
                 'price' => $request->price,
                 'size' => $request->size,
                 'google_map' => $request->google_map,
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'seo_keywords' => $request->seo_keywords,
             ];
             if ($request->has('site_plan')) {
                 $data['site_plan'] = saveFiles($request->site_plan, 'project-site-plans');
@@ -195,14 +215,17 @@ class ProjectsController extends Controller
                 }
             }
         }
+
         $deleteCustomSpecs = CustomSpecs::where('project_id', $request->id)->delete();
-        foreach ($request->more_specs_title as $key => $item) {
-            $create = CustomSpecs::create([
-                'project_id' => $request->id,
-                'title' => $item,
-                'value' => $request->more_specs_value[$key],
-                'icon' => isset($request->more_specs_icon[$key]) ? saveFiles($request->more_specs_icon[$key], 'custom_specs_icon') : $request->old_more_specs_icon[$key]
-            ]);
+        if ($request->has('more_specs_title')) {
+            foreach ($request->more_specs_title as $key => $item) {
+                $create = CustomSpecs::create([
+                    'project_id' => $request->id,
+                    'title' => $item,
+                    'value' => $request->more_specs_value[$key],
+                    'icon' => isset($request->more_specs_icon[$key]) ? saveFiles($request->more_specs_icon[$key], 'custom_specs_icon') : $request->old_more_specs_icon[$key]
+                ]);
+            }
         }
         return json_encode([
             'error' => false,
@@ -223,6 +246,50 @@ class ProjectsController extends Controller
         return json_encode([
             'error' => false,
             'message' => 'Project deleted successfully'
+        ]);
+    }
+
+    public function getProjectsPageSeo()
+    {
+        $seoSetting = SeoSettings::where('page', 'projects')->first();
+        return view('admin.projects.seo-settings', compact('seoSetting'));
+    }
+
+    public function statusList()
+    {
+        $statuses = ProjectStatuses::latest()->get();
+        return view('admin.projects.statuses', compact('statuses'));
+    }
+
+    public function addStatus(Request $request)
+    {
+        $create = ProjectStatuses::create([
+            'title' => $request->title
+        ]);
+
+        return json_encode([
+            'error' => false,
+            'message' => 'Status saved successfully'
+        ]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $update = ProjectStatuses::where('id', $request->id)->update([
+            'title' => $request->title
+        ]);
+        return json_encode([
+            'error' => false,
+            'message' => 'Status updated successfully'
+        ]);
+    }
+
+    public function deleteStatus(Request $request)
+    {
+        $delete = ProjectStatuses::where('id', $request->id)->delete();
+        return json_encode([
+            'error' => false,
+            'message' => 'Status deleted successfully'
         ]);
     }
 }

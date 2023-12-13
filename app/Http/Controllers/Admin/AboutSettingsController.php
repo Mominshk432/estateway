@@ -7,6 +7,7 @@ use App\Models\about_us;
 use App\Models\about_us_director_message;
 use App\Models\about_us_our_moto;
 use App\Models\about_us_why_choose_us;
+use App\Models\SeoSettings;
 use Illuminate\Http\Request;
 
 class AboutSettingsController extends Controller
@@ -17,7 +18,8 @@ class AboutSettingsController extends Controller
         $director_message = about_us_director_message::first();
         $why_choose_us = about_us_why_choose_us::first();
         $our_moto = about_us_our_moto::first();
-        return view('admin.about-settings', compact('about_us', 'director_message', 'why_choose_us', 'our_moto'));
+        $seoSetting = SeoSettings::where('page', 'about')->first();
+        return view('admin.about-settings', compact('about_us', 'director_message', 'why_choose_us', 'our_moto','seoSetting'));
     }
 
     public function update_about_us(Request $request)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Footer;
+use App\Models\SeoSettings;
 use App\Models\Site_Visit;
 use Illuminate\Http\Request;
 
@@ -44,7 +45,8 @@ class GlobalController extends Controller
     public function get_contact_setting()
     {
         $contact = Contact::first();
-        return view('admin.contact_settings', compact('contact'));
+        $seoSetting = SeoSettings::where('page', 'contact')->first();
+        return view('admin.contact_settings', compact('contact', 'seoSetting'));
     }
 
     public function save_contact_settings(Request $request)

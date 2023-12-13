@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomepageSlider;
+use App\Models\SeoSettings;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -70,5 +71,12 @@ class HomepageController extends Controller
             'error' => false,
             'message' => 'Slider deleted successfully'
         ]);
+    }
+
+    public function getHomePageSeoSettings()
+    {
+        $seoSetting = SeoSettings::where('page', 'homepage')->first();
+        return view('admin.homepage.seo-settings', compact('seoSetting'));
+
     }
 }

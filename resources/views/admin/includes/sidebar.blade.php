@@ -24,12 +24,12 @@
     <div class="h-100" id="leftside-menu-container" data-simplebar>
         <!--- Sidemenu -->
         <ul class="side-nav">
-            <li class="side-nav-item">
-                <a href="{{route('admin.dashboard')}}" class="side-nav-link">
-                    <i class="ri-dashboard-3-line"></i>
-                    <span> Dashboard </span>
-                </a>
-            </li>
+            {{--            <li class="side-nav-item">--}}
+            {{--                <a href="{{route('admin.dashboard')}}" class="side-nav-link">--}}
+            {{--                    <i class="ri-dashboard-3-line"></i>--}}
+            {{--                    <span> Dashboard </span>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
             <li class="side-nav-item">
                 <a href="{{route('admin.about')}}" class="side-nav-link">
                     <i class="ri-information-line"></i>
@@ -69,6 +69,9 @@
                         <li>
                             <a href="{{route('admin.testimonials')}}">Testimonials</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.homepage.seo')}}">Seo Settings</a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -86,6 +89,9 @@
                         </li>
                         <li>
                             <a href="{{route('admin.blogs.list')}}">List</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.blogs.seo')}}">Seo Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -107,6 +113,12 @@
                         </li>
                         <li>
                             <a href="{{route('admin.project.list')}}">List</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.project.statuses')}}">Status</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.project.seo')}}">Seo Settings</a>
                         </li>
                     </ul>
                 </div>

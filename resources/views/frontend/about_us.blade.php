@@ -2,6 +2,13 @@
 @section('title')
     About Us
 @endsection
+@if(!empty($seo))
+    @section('seo')
+        <title>{{$seo->seo_title}}</title>
+        <meta name="keywords" content="{{convertKeyword($seo->seo_keywords)}}">
+        <meta name="description" content="{{ $seo->seo_description }}">
+    @endsection
+@endif
 @section('body')
     <style>
         .director_msg_content + p {
@@ -29,8 +36,8 @@
                     <div class="position-relative">
                         <img src="{{asset('frontend/assets/images/about.svg')}}" class="w-100 about-main-img" alt="">
                         <button class="btn btn-theme-about gap-3"><span>Contact Us</span> <span><img
-                                        src="{{asset('frontend/assets/images/arrow-right-black.svg')}}" width="40"
-                                        alt=""></span></button>
+                                    src="{{asset('frontend/assets/images/arrow-right-black.svg')}}" width="40"
+                                    alt=""></span></button>
                     </div>
                 </div>
             </div>
@@ -96,9 +103,9 @@
                                 <div class="col-lg-4">
                                     <div class="building">
                                         <img
-                                                src="{{!empty($why_choose_us->image) ? asset($why_choose_us->image) : 'https://via.placeholder.com/1000x1000'}}"
-                                                class="w-100"
-                                                alt="">
+                                            src="{{!empty($why_choose_us->image) ? asset($why_choose_us->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                            class="w-100"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">

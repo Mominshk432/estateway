@@ -10,6 +10,7 @@ $(document).ready(function () {
             }
         },
         scrollX: true,
+        order: [],
         language: {paginate: {previous: "<i class='ri-arrow-left-s-line'>", next: "<i class='ri-arrow-right-s-line'>"}},
         drawCallback: function () {
             $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
@@ -44,6 +45,7 @@ $(document).ready(function () {
         }
     }), $("#scroll-horizontal-datatable").DataTable({
         scrollX: !0,
+        order: [],
         language: {paginate: {previous: "<i class='ri-arrow-left-s-line'>", next: "<i class='ri-arrow-right-s-line'>"}},
         drawCallback: function () {
             $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
