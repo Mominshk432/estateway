@@ -68,7 +68,9 @@
             <div class="col-12">
                 <div class="my-2 my-sm-4 d-flex w-100 justify-content-between">
                     <div class="d-block d-md-flex align-items-center flex-wrap gap-3 gap-lg-5">
-                        <button class="btn btn-move">Ready to move</button>
+                        @if(!empty($project->getStatus))
+                            <button class="btn btn-move">{{$project->getStatus->title ?? ''}}</button>
+                        @endif
                         <div class="d-flex my-3 my-sm-0 gap-2 align-items-center">
                             <img src="{{asset('frontend/assets/images/bed-room.svg')}}" width="20" alt="">
                             <p class="desc mb-0">
@@ -84,7 +86,7 @@
                         <div class="d-flex my-3 my-sm-0 gap-2 align-items-center">
                             <img src="{{asset('frontend/assets/images/square-fit.svg')}}" width="20" alt="">
                             <p class="desc mb-0">
-                                {{$project->size ?? ''}} sq.ft.
+                                Size: {{$project->size ?? ''}} sq.ft.
                             </p>
                         </div>
                         @if(count($project->custom_specs) > 0)

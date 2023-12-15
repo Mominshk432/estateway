@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en">
-@php
-    $footer = \App\Models\Footer::first();
-@endphp
+
 @include('frontend.includes.head')
 
 <body>

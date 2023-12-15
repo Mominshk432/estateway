@@ -13,12 +13,11 @@
 <div id="carouselExampleIndicators" class="carousel slide main-slider-section" data-bs-ride="carousel"
      data-bs-pause="false">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+        @foreach($banners as $banner)
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$loop->index}}"
+                    class="{{$loop->index == 0 ? 'active' : ''}}"
+                    aria-current="true" aria-label="Slide {{$loop->index}}"></button>
+        @endforeach
         <div class="carousel-bar"></div>
     </div>
     <div class="carousel-inner">
@@ -68,8 +67,8 @@
 @include('frontend.includes.header')
 <!--about us-->
 <div class="aboutMe">
-    <img data-src="{{asset('frontend/assets/images/about-me.svg')}}" class="w-100 d-none d-sm-block lazy" alt="">
-    <img data-src="{{asset('frontend/assets/images/about-ms-sm.svg')}}" class="w-100 w-100 d-block d-sm-none lazy"
+    <img src="{{asset('frontend/assets/images/about-me.svg')}}" class="w-100 d-none d-sm-block " alt="">
+    <img src="{{asset('frontend/assets/images/about-ms-sm.svg')}}" class="w-100 w-100 d-block d-sm-none "
          alt="">
     <div class="container">
         <div class="row">
@@ -200,7 +199,8 @@
                                             <div class="d-flex">
                                                 <button class="btn btn-heart me-2"><img
                                                         class="lazy"
-                                                        data-src="{{asset('frontend/assets/images/heart.svg')}}" alt="">
+                                                        data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                        alt="">
                                                 </button>
                                                 <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i>
                                                 </button>
@@ -312,7 +312,8 @@
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                class="lazy"
+                                                data-src="{{asset('frontend/assets/images/heart.svg')}}"
                                                 alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
@@ -350,7 +351,8 @@
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                class="lazy"
+                                                data-src="{{asset('frontend/assets/images/heart.svg')}}"
                                                 alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
@@ -389,7 +391,8 @@
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                class="lazy"
+                                                data-src="{{asset('frontend/assets/images/heart.svg')}}"
                                                 alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>
@@ -427,7 +430,8 @@
                                     <p class="bg-yellow">Under Construction</p>
                                     <div class="d-flex">
                                         <button class="btn btn-heart me-2"><img
-                                                class="lazy" data-src="{{asset('frontend/assets/images/heart.svg')}}"
+                                                class="lazy"
+                                                data-src="{{asset('frontend/assets/images/heart.svg')}}"
                                                 alt="">
                                         </button>
                                         <button class="btn btn-heart"><i class="bi bi-plus-lg mt-0"></i></button>

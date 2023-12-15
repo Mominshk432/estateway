@@ -67,9 +67,11 @@
             <div class="projects-content">
                 <div class="container">
                     <div class="row align-items-center py-5">
-                        <div class="col-md-4">
+                        <div class="col-md-4"
+                             onclick="window.location.href='{{route('project.single',$project->slug)}}'">
                             <div class="project-img">
-                                <img class="lazy"
+                                <img
+                                    class="lazy"
                                     data-src="{{!empty($project->images[0]->image)  ? asset($project->images[0]->image) : 'https://via.placeholder.com/1000x1000' }}"
                                     alt="">
                                 <div class="project-absolute">
@@ -89,9 +91,12 @@
                         </div>
                         <div class="col-md-8">
                             <div class="project-title">
-                                <h5 class="my-2 my-md-0">{{$project->heading ?? ''}}</h5>
+                                <a href="{{route('project.single',$project->slug)}}"
+                                   class="text-decoration-none text-black"><h5
+                                        class="my-2 my-md-0">{{$project->heading ?? ''}}</h5></a>
                                 <h5 class="d-flex my-2 align-items-center gap-2 justify-content-end"><img
-                                       class="lazy" data-src="{{asset('frontend/assets/images/sign.svg')}}" width="18" alt=""><span>{{$project->price ?? '0'}} . Onwards</span>
+                                        class="lazy" data-src="{{asset('frontend/assets/images/sign.svg')}}" width="18"
+                                        alt=""><span>{{$project->price ?? '0'}} . Onwards</span>
                                 </h5>
                             </div>
                             <p class="desc my-3">{{$project->address ?? ''}}</p>
@@ -111,7 +116,7 @@
                                 <div class="d-flex gap-2">
                                     <img src="{{asset('frontend/assets/images/square-fit.svg')}}" width="20" alt="">
                                     <p class="desc mb-0">
-                                        {{$project->size ?? '0'}} sq.ft.
+                                        Size: {{$project->size ?? '0'}} sq.ft.
                                     </p>
                                 </div>
                                 @if(count($project->custom_specs) > 0)

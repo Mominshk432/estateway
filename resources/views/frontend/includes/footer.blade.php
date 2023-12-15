@@ -1,3 +1,6 @@
+@php
+    $footer = \App\Models\Footer::first();
+@endphp
 <div class="footer">
     <div class="container position-relative">
         <div class="row border-bottom border-light-theme pb-5 position-relative z-2">
@@ -40,12 +43,12 @@
                                 class="footer-links-img" alt=""></a>
                     </div>
                     <div>
-                        <a href="{{$footer->f_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
+                        <a href="{{$footer->ig_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
                                 src="{{asset('frontend/assets/images/insta-icon.svg')}}"
                                 class="footer-links-img" alt=""></a>
                     </div>
                     <div>
-                        <a href="{{$footer->f_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
+                        <a href="{{$footer->t_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
                                 src="{{asset('frontend/assets/images/twitter-icon.svg')}}"
                                 class="footer-links-img" alt=""></a>
                     </div>

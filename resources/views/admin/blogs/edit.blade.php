@@ -62,7 +62,7 @@
                                                    class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="simpleinput" class="form-label">Slug</label>
+                                            <label for="simpleinput" class="form-label">Datetime</label>
                                             <input value="{{$blog->created_at ?? ''}}" autocomplete="off"
                                                    placeholder="Slug..." type="datetime-local"
                                                    id="simpleinput" name="timestamp"
@@ -173,7 +173,7 @@
                         $.growl.notice({message: res.message});
 
                         setTimeout(function () {
-                            window.location.href='{{route('admin.blogs.list')}}';
+                            window.location.href = '{{route('admin.blogs.list')}}';
                         }, 1000);
                     } else {
                         $.growl.error({message: res.message});

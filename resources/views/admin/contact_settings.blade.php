@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for=""><b>Map Link</b></label>
-                                            <input value="{{$contact->map_link ?? ''}}" type="text" name="address"
+                                            <input value="{{$contact->map_link ?? ''}}" type="text" name="map_link"
                                                    class="form-control">
                                         </div>
                                     </div>

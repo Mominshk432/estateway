@@ -19,7 +19,7 @@ class ProjectController extends Controller
         }
         $categories = Category::latest()->get();
         $projects = $projects->latest()->paginate(10);
-        $seo = SeoSettings::where('page', 'blogs')->first();
+        $seo = SeoSettings::where('page', 'projects')->first();
         return view('frontend.project_list', compact('projects', 'categories', 'seo'));
     }
 

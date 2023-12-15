@@ -56,6 +56,7 @@ class GlobalController extends Controller
             'another_phone' => $request->another_phone,
             'email' => $request->email,
             'address' => $request->address,
+            'map_link' => $request->map_link,
         ]);
 
         return json_encode([

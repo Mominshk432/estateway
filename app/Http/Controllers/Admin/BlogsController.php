@@ -80,7 +80,8 @@ class BlogsController extends Controller
                 'seo_title' => $request->seo_title,
                 'seo_keywords' => $request->seo_keywords,
                 'seo_description' => $request->seo_description,
-                'slug' => $request->slug
+                'slug' => $request->slug,
+                'created_at' => !empty($request->timestamp) ? Carbon::parse($request->timestamp) : now()
             ];
 
             if ($request->has('image')) {
