@@ -11,7 +11,7 @@
 @endif
 @section('body')
     <div style="background: rgba(230, 231, 233, 1)!important;">
-        <div class="contact-main mt-110">
+        <div class="contact-main">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-4">

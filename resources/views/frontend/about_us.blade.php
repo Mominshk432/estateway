@@ -19,7 +19,7 @@
             color: white !important;
         }
     </style>
-    <div class="about-main mt-110" style="background-image: url({{asset('frontend/assets/images/about-banner.svg')}})">
+    <div class="about-main" style="background-image: url({{asset('frontend/assets/images/about-banner.svg')}})">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
