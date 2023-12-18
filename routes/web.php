@@ -33,6 +33,9 @@ Route::get('/', [GlobalController::class, 'homepage'])->name('homepage');
 Route::get('/about-us', [GlobalController::class, 'about'])->name('about');
 Route::get('/sitemap', [GlobalController::class, 'sitemap'])->name('sitemap');
 Route::get('/contact-us', [GlobalController::class, 'contact'])->name('contact');
+Route::get('/privacy-policy',function () {
+    return view('frontend.privacy-policy');
+})->name('privacy-policy');
 Route::post('/contact-us-post', [GlobalController::class, 'contactPost'])->name('contact.post');
 Route::post('/site-visit-post', [GlobalController::class, 'storeSiteVisit'])->name('site.visit.post');
 Route::post('/global-search', [GlobalController::class, 'global_search'])->name('global.search');
