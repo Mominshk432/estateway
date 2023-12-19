@@ -33,9 +33,7 @@ Route::get('/', [GlobalController::class, 'homepage'])->name('homepage');
 Route::get('/about-us', [GlobalController::class, 'about'])->name('about');
 Route::get('/sitemap', [GlobalController::class, 'sitemap'])->name('sitemap');
 Route::get('/contact-us', [GlobalController::class, 'contact'])->name('contact');
-Route::get('/privacy-policy',function () {
-    return view('frontend.privacy-policy');
-})->name('privacy-policy');
+Route::get('/privacy-policy', [GlobalController::class, 'getPrivacyPolicy'])->name('getPrivacyPolicy');
 Route::post('/contact-us-post', [GlobalController::class, 'contactPost'])->name('contact.post');
 Route::post('/site-visit-post', [GlobalController::class, 'storeSiteVisit'])->name('site.visit.post');
 Route::post('/global-search', [GlobalController::class, 'global_search'])->name('global.search');
@@ -112,7 +110,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('/delete-status', [ProjectsController::class, 'deleteStatus'])->name('admin.project.statuses.delete');
 
     });
-
+    Route::prefix('privacy-policy')->group(function () {
+        Route::get('/settings', [AdminGlobalController::class, 'getPrivacyPolicySettings'])->name('admin.privacy_policy.setting');
+        Route::post('/update', [AdminGlobalController::class, 'updatePrivacyPolicy'])->name('admin.privacy_policy.update');
+    });
     Route::prefix('my-profile')->group(function () {
         Route::get('/', [ProfileController::class, 'getMyProfile'])->name('admin.profile');
         Route::post('/update', [ProfileController::class, 'update'])->name('admin.profile.update');

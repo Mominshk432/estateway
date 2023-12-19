@@ -55,6 +55,12 @@
                 </a>
             </li>
             <li class="side-nav-item">
+                <a href="{{route('admin.privacy_policy.setting')}}" class="side-nav-link">
+                    <i class="ri-settings-2-line"></i>
+                    <span> Privacy Policy </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
                    class="side-nav-link">
                     <i class="ri-home-2-line"></i>

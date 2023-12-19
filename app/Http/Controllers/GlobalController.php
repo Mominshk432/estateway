@@ -10,6 +10,7 @@ use App\Models\Blogs;
 use App\Models\Contact;
 use App\Models\ContactedUsers;
 use App\Models\HomepageSlider;
+use App\Models\PrivacyPolicy;
 use App\Models\Project;
 use App\Models\SeoSettings;
 use App\Models\Site_Visit;
@@ -111,6 +112,13 @@ class GlobalController extends Controller
         $projects_page = SeoSettings::where('page', 'projects')->first();
         $blogs = Blogs::latest()->get();
         $projects = Project::latest()->get();
-        return view('frontend.sitemap', compact('homepage', 'about_page', 'contact_page', 'blog_page', 'projects_page', 'blogs','projects'));
+        return view('frontend.sitemap', compact('homepage', 'about_page', 'contact_page', 'blog_page', 'projects_page', 'blogs', 'projects'));
+    }
+
+    public function getPrivacyPolicy()
+    {
+        $privacy_policy = PrivacyPolicy::first();
+        $seo = SeoSettings::where('page', 'privacy-policy')->first();
+        return view('frontend.privacy-policy', compact('privacy_policy', 'seo'));
     }
 }

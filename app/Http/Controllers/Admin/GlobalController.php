@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Footer;
+use App\Models\PrivacyPolicy;
 use App\Models\SeoSettings;
 use App\Models\Site_Visit;
 use Illuminate\Http\Request;
@@ -62,6 +63,26 @@ class GlobalController extends Controller
         return json_encode([
             'error' => false,
             'message' => 'Contact settings saved successfully'
+        ]);
+    }
+
+    public function getPrivacyPolicySettings()
+    {
+        $settings = PrivacyPolicy::first();
+        $seoSetting = SeoSettings::where('page', 'privacy-policy')->first();
+        return view('admin.privacy-policy.privacy-policy-settings', compact('settings', 'seoSetting'));
+    }
+
+    public function updatePrivacyPolicy(Request $request)
+    {
+        $update = PrivacyPolicy::where('id', $request->id)->update([
+            'heading' => $request->heading,
+            'content' => $request['content']
+        ]);
+
+        return json_encode([
+            'error' => false,
+            'message' => 'Settings updated successfully'
         ]);
     }
 }

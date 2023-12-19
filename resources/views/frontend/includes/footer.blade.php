@@ -32,25 +32,25 @@
             <div class="col-md-7">
                 <p class="text-theme-light mb-0 text-center text-md-start mt-3 mt-md-0"><span class="pe-2">Copyright &copy; 2023</span>
                     <span class="d-none text-theme-light d-md-inline-flex ps-2 border-theme-light-left"><a
-                            href="javascript:void(0)"
-                            class="text-decoration-none text-theme-light">Privacy Policy</a></span></p>
+                                href="{{route('getPrivacyPolicy')}}"
+                                class="text-decoration-none text-theme-light">Privacy Policy</a></span></p>
             </div>
             <div class="col-md-5">
                 <div class="d-flex gap-4 justify-content-evenly justify-content-md-start">
                     <div>
                         <a href="{{$footer->f_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
-                                src="{{asset('frontend/assets/images/fb-icon.svg')}}"
-                                class="footer-links-img" alt=""></a>
+                                    src="{{asset('frontend/assets/images/fb-icon.svg')}}"
+                                    class="footer-links-img" alt=""></a>
                     </div>
                     <div>
                         <a href="{{$footer->ig_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
-                                src="{{asset('frontend/assets/images/insta-icon.svg')}}"
-                                class="footer-links-img" alt=""></a>
+                                    src="{{asset('frontend/assets/images/insta-icon.svg')}}"
+                                    class="footer-links-img" alt=""></a>
                     </div>
                     <div>
                         <a href="{{$footer->t_link ?? 'javascript:void(0)'}}" class="btn footer-links"><img
-                                src="{{asset('frontend/assets/images/twitter-icon.svg')}}"
-                                class="footer-links-img" alt=""></a>
+                                    src="{{asset('frontend/assets/images/twitter-icon.svg')}}"
+                                    class="footer-links-img" alt=""></a>
                     </div>
                 </div>
             </div>
