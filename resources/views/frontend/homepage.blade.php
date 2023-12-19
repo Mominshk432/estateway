@@ -526,7 +526,7 @@
                                             <span class="fw-500 my-2">{{$blog->created_at->format('M d, Y')}}</span>
                                         </div>
                                         <div class="my-3 px-3">
-                                            <h5 class="fw-500">{{$blog->title ?? ''}}</h5>
+                                            <h5 class="fw-500 title-length">{{$blog->title ?? ''}}</h5>
                                         </div>
                                         <a href="{{route('blogs.single',$blog->slug)}}" class="text-decoration-none">
                                             <div class="bg-black px-3 d-flex justify-content-between py-2 mb-3">
@@ -551,6 +551,18 @@
 @include('frontend.includes.scripts')
 <script>
     $(document).ready(function () {
+        const cards = document.querySelectorAll('.title-length');
+        let maxHeight = 0;
+        // Loop through each card to find the maximum height
+        cards.forEach(card => {
+            const cardHeight = card.clientHeight;
+            if (cardHeight > maxHeight) {
+                maxHeight = cardHeight;
+            }
+        });
+        cards.forEach(card => {
+            card.style.height = `${maxHeight}px`;
+        });
         let header = $('#header');
         let headerOffSet = header.offset().top;
         if ($(window).width() <= 992) {

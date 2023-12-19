@@ -44,9 +44,13 @@
     transition: all .5s;
     left: 50%;
     transform: translateX(-50%);
+<<<<<<< Updated upstream
+    top: 110%;
+=======
     top: 82px;
+    z-index: 9999;
+>>>>>>> Stashed changes
 }
-
 .search-sec {
     display: block;
 }
@@ -1315,8 +1319,8 @@ hr {
 }
 
 .project-section li:last-child {
-    background-color: #303334;
-    padding-right: 20px;
+    /*background-color: #303334;*/
+    /*padding-right: 20px;*/
 }
 
 .project-section li select {

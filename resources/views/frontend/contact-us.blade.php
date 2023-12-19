@@ -10,7 +10,7 @@
     @endsection
 @endif
 @section('body')
-    <div class="contact-main mt-110">
+    <div class="contact-main">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
