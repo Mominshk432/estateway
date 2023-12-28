@@ -1070,6 +1070,10 @@ body
     }
 }
 @media screen and (max-width: 480px) {
+    .contact-icons
+    {
+        margin: 0;
+    }
     .right-arrow
     {
         width: 25px;

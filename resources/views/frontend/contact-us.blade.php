@@ -29,37 +29,45 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 class="relation-heading">Call Us</h2>
-                    <div class="text-center">
-                        <img src="{{asset('frontend/assets/images/contact-phone.svg')}}" class="contact-icons"
-                             alt="relation-icon">
+                    <h2 class="relation-heading text-start text-sm-center">Call Us</h2>
+                    <div class="d-flex d-sm-block mb-4 mb-sm-0 align-items-center justify-content-between">
+                        <div class="text-center">
+                            <img src="{{asset('frontend/assets/images/contact-phone.svg')}}" class="contact-icons"
+                                 alt="relation-icon">
+                        </div>
+                        <div>
+                            <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
+                                {{$contact->phone ?? ''}}
+                            </p>
+                            <p class="text-center text-theme-light fs-5 contact-us-content">
+                                {{$contact->another_phone ?? ''}}
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
-                        {{$contact->phone ?? ''}}
-                    </p>
-                    <p class="text-center text-theme-light fs-5 contact-us-content">
-                        {{$contact->another_phone ?? ''}}
-                    </p>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="relation-heading">Email</h2>
-                    <div class="text-center">
-                        <img src="{{asset('frontend/assets/images/contact-mail.svg')}}" class="contact-icons"
-                             alt="relation-icon">
+                    <h2 class="relation-heading text-start text-sm-center">Email</h2>
+                    <div class="d-flex d-sm-block mb-4 mb-sm-0 align-items-center justify-content-between">
+                        <div class="text-center">
+                            <img src="{{asset('frontend/assets/images/contact-mail.svg')}}" class="contact-icons"
+                                 alt="relation-icon">
+                        </div>
+                        <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
+                            {{$contact->email ?? ''}}
+                        </p>
                     </div>
-                    <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
-                        {{$contact->email ?? ''}}
-                    </p>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="relation-heading">Address</h2>
-                    <div class="text-center">
-                        <img src="{{asset('frontend/assets/images/contact-location.svg')}}" class="contact-icons"
-                             alt="relation-icon">
+                    <h2 class="relation-heading text-start text-sm-center">Address</h2>
+                    <div class="d-flex d-sm-block mb-4 mb-sm-0 align-items-center justify-content-between">
+                        <div class="text-center">
+                            <img src="{{asset('frontend/assets/images/contact-location.svg')}}" class="contact-icons"
+                                 alt="relation-icon">
+                        </div>
+                        <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
+                            {{$contact->address ?? ''}}
+                        </p>
                     </div>
-                    <p class="text-center text-theme-light fs-5 contact-us-content mb-1">
-                        {{$contact->address ?? ''}}
-                    </p>
                 </div>
             </div>
         </div>
