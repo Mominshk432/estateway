@@ -52,13 +52,18 @@ class GlobalController extends Controller
 
     public function save_contact_settings(Request $request)
     {
-        $update = Contact::where('id', $request->id)->update([
+
+        $data = [
             'phone' => $request->phone,
             'another_phone' => $request->another_phone,
             'email' => $request->email,
             'address' => $request->address,
             'map_link' => $request->map_link,
-        ]);
+        ];
+        if ($request->has('image')) {
+            $data['image'] = saveFiles($request->image, 'contact_page_images');
+        }
+        $update = Contact::where('id', $request->id)->update($data);
 
         return json_encode([
             'error' => false,

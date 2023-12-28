@@ -26,7 +26,7 @@
                     <h5 class="badge-yellow ms-auto">
                         <img class="lazy" data-src="{{asset('frontend/assets/images/rupee-svgrepo-com.svg')}}"
                              width="24" alt="img">
-                        <span>{{$project->price ?? '0'}}. Onward</span>
+                        <span>{{$project->price ?? '0'}} {{$project->price_type ?? ''}}. Onward</span>
                     </h5>
                 </div>
             </div>
@@ -118,7 +118,7 @@
     </div>
     <div class="property-text">
         <div class="container mt-md-4">
-            <p>{{$project->description ?? ''}}</p>
+            <p>{!! $project->description !!}</p>
         </div>
         <div class="container">
             <div class="row">

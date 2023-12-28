@@ -7,6 +7,7 @@ use App\Models\about_us_director_message;
 use App\Models\about_us_our_moto;
 use App\Models\about_us_why_choose_us;
 use App\Models\Blogs;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\ContactedUsers;
 use App\Models\HomepageSlider;
@@ -24,10 +25,13 @@ class GlobalController extends Controller
     {
         $banners = HomepageSlider::latest()->get();
         $blogs = Blogs::latest()->get();
-        $projects = Project::latest()->get();
-        $testimonials = Testimonial::latest()->get();
+        $commercialCategory = Category::where('title', 'Commercial')->first();
+        $CommercialProjects = Project::where('category_id', $commercialCategory->id)->latest()->get();
+        $residentialCategory = Category::where('title', 'Residential')->first();
+        $ResidentialProjects = Project::where('category_id', $residentialCategory->id)->latest()->get();
+        $testimonials = Testimonial::latest()->take(5)->get();
         $seo = SeoSettings::where('page', 'homepage')->first();
-        return view('frontend.homepage', compact('banners', 'blogs', 'projects', 'testimonials', 'seo'));
+        return view('frontend.homepage', compact('banners', 'blogs', 'CommercialProjects', 'ResidentialProjects', 'testimonials', 'seo'));
     }
 
     public function about()

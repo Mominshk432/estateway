@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label for="simpleinput" class="form-label">Description</label>
                                             <textarea autocomplete="off" placeholder="Description..." name="description"
-                                                      id="" cols="30"
+                                                      id="description" cols="30"
                                                       rows="03"
                                                       class="form-control"></textarea>
                                         </div>
@@ -186,11 +186,19 @@
                                                            class="form-control"
                                                            name="size">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="simpleinput" class="form-label">Price</label>
-                                                    <input autocomplete="off" placeholder="45 Lac" type="number"
-                                                           class="form-control"
-                                                           name="price">
+                                                <div class="mb-3 d-flex align-items-end gap-2">
+                                                    <div class="w-100">
+                                                        <label for="simpleinput" class="form-label">Price</label>
+                                                        <input autocomplete="off" placeholder="45 Lac" type="number"
+                                                               class="form-control"
+                                                               name="price">
+                                                    </div>
+                                                    <div class="w-100">
+                                                        <select class="form-control" name="price_type">
+                                                            <option value="Lakhs">Lakhs</option>
+                                                            <option value="Crores">Crores</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div id="more_specifications">
 
@@ -302,6 +310,14 @@
             });
         ClassicEditor
             .create(document.querySelector('#amenities'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#description'))
             .then(editor => {
                 console.log(editor);
             })

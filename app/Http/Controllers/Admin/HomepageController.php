@@ -23,6 +23,7 @@ class HomepageController extends Controller
 
         if ($validated) {
             $store = HomepageSlider::create([
+                'type' => $request->type == 'computer' ? 1 : 2,
                 'heading' => $request->heading,
                 'description' => $request->description,
                 'image' => saveFiles($request->image, 'homepage-slider-images'),

@@ -34,43 +34,57 @@
                             @csrf
                             <input type="hidden" name="id" value="{{$contact->id}}">
                             <div class="card-body">
-                                <div class="row mb-2">
-                                    <h5><b>Contact</b></h5>
-                                    <hr>
-                                    <div class="col-6">
-                                        <div class="form-group mb-2">
-                                            <label for=""><b>Phone</b></label>
-                                            <input value="{{$contact->phone ?? ''}}" type="text" name="phone"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-2">
-                                            <label for=""><b>Another Phone</b></label>
-                                            <input value="{{$contact->another_phone ?? ''}}" type="text"
-                                                   name="another_phone"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="row mb-2">
+                                            <h5><b>Contact</b></h5>
+                                            <hr>
+                                            <div class="col-6">
+                                                <div class="form-group mb-2">
+                                                    <label for=""><b>Phone</b></label>
+                                                    <input value="{{$contact->phone ?? ''}}" type="text" name="phone"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-2">
+                                                    <label for=""><b>Another Phone</b></label>
+                                                    <input value="{{$contact->another_phone ?? ''}}" type="text"
+                                                           name="another_phone"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
 
-                                        <div class="form-group mb-2">
-                                            <label for=""><b>Email</b></label>
-                                            <input value="{{$contact->email ?? ''}}" type="text" name="email"
-                                                   class="form-control">
+                                                <div class="form-group mb-2">
+                                                    <label for=""><b>Email</b></label>
+                                                    <input value="{{$contact->email ?? ''}}" type="text" name="email"
+                                                           class="form-control">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label for=""><b>Address</b></label>
+                                                    <input value="{{$contact->address ?? ''}}" type="text"
+                                                           name="address"
+                                                           class="form-control">
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label for=""><b>Map Link</b></label>
+                                                    <input value="{{$contact->map_link ?? ''}}" type="text"
+                                                           name="map_link"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-2">
-                                            <label for=""><b>Address</b></label>
-                                            <input value="{{$contact->address ?? ''}}" type="text" name="address"
-                                                   class="form-control">
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label for=""><b>Map Link</b></label>
-                                            <input value="{{$contact->map_link ?? ''}}" type="text" name="map_link"
-                                                   class="form-control">
-                                        </div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img onclick="$(this).next().click()" id="contactImgPreview"
+                                             src="{{!empty($contact->image) ? asset($contact->image) : 'https://via.placeholder.com/1000x1000'}}"
+                                             style="height: 100%;width: 70%;object-fit: cover;" alt="">
+                                        <input name="image" type="file" class="d-none"
+                                               onchange="showSelectedImage($(this),'contactImgPreview')">
                                     </div>
                                 </div>
+
                             </div> <!-- end card-body -->
                             <div class="card-footer text-end">
                                 <button type="submit" class="btn btn-success submitBtn">Save</button>

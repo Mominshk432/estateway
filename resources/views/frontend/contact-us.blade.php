@@ -130,7 +130,9 @@ background: #fff;
 
                 </div>
                 <div class="col-md-3 p-0">
-                    <img src="{{asset('frontend/assets/images/git-img.svg ')}}" class="git-img" alt="">
+                    <img
+                        src="{{!empty($contact->image) ? asset($contact->image) : 'https://via.placeholder.com/1000x1000'}}"
+                        class="git-img" alt="">
                 </div>
             </div>
         </div>

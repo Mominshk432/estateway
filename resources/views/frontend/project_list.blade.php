@@ -96,7 +96,7 @@
                                         class="my-2 my-md-0">{{$project->heading ?? ''}}</h5></a>
                                 <h5 class="d-flex my-2 align-items-center gap-2 justify-content-end"><img
                                         class="lazy" data-src="{{asset('frontend/assets/images/sign.svg')}}" width="18"
-                                        alt=""><span>{{$project->price ?? '0'}} . Onwards</span>
+                                        alt=""><span>{{$project->price ?? '0'}} {{$project->price_type ?? ''}} . Onwards</span>
                                 </h5>
                             </div>
                             <p class="desc my-3">{{$project->address ?? ''}}</p>
