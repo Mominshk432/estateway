@@ -684,7 +684,7 @@ body {
 }
 
 .about-main {
-    padding: 40px 0;
+    padding-bottom: 40px;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
@@ -836,6 +836,7 @@ body {
 }
 
 .about-main-img {
+    margin-top: -60px;
     position: relative;
     z-index: -1;
 }
