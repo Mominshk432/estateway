@@ -236,7 +236,7 @@
                                                    alt="img"></span><span class="fw-500 fs-5">{{$otherProject->price ?? '0'}}. Onwards</span>
                                                 </div>
                                                 <div class="my-3 px-3">
-                                                    <h4 class="fw-500">{{$otherProject->heading ?? ''}}</h4>
+                                                    <h4 class="fw-500 title-length">{{$otherProject->heading ?? ''}}</h4>
                                                     <p class="desc min-48">{{$otherProject->address ?? ''}}</p>
                                                 </div>
                                                 <a href="{{route('project.single',$otherProject->slug)}}"
@@ -264,6 +264,18 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function () {
+            const cards = document.querySelectorAll('.title-length');
+            let maxHeight = 0;
+            // Loop through each card to find the maximum height
+            cards.forEach(card => {
+                const cardHeight = card.clientHeight;
+                if (cardHeight > maxHeight) {
+                    maxHeight = cardHeight;
+                }
+            });
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
             $('.toggle-btn').click(function () {
                 $('.mobile-navigation').fadeIn();
             });

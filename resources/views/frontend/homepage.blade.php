@@ -10,7 +10,8 @@
 @endif
 <body>
 @include('frontend.includes.mobile-nav')
-<div id="carouselExampleIndicators" class="carousel slide main-slider-section" data-bs-ride="carousel"
+{{--for desktop--}}
+<div id="carouselExampleIndicators" class="d-none d-sm-block carousel slide main-slider-section" data-bs-ride="carousel"
      data-bs-pause="false">
     <div class="carousel-indicators">
         @foreach($banners as $banner)
@@ -64,6 +65,62 @@
         @endif
     </div>
 </div>
+{{--for mobile--}}
+<div id="carouselExampleIndicators" class="d-block d-sm-none carousel slide main-slider-section" data-bs-ride="carousel"
+     data-bs-pause="false">
+    <div class="carousel-indicators">
+        @foreach($banners as $banner)
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$loop->index}}"
+                    class="{{$loop->index == 0 ? 'active' : ''}}"
+                    aria-current="true" aria-label="Slide {{$loop->index}}"></button>
+        @endforeach
+        <div class="carousel-bar"></div>
+    </div>
+    <div class="carousel-inner">
+        @if(count($banners) > 0)
+            @foreach($banners as $banner)
+                <div
+                    onclick="window.location.href='{{!empty($banner->slider_link) ? $banner->slider_link : 'javascript:void(0)'}}'"
+                    class="carousel-item active">
+                    <div class="main-slide"
+                         style="background-image: url({{asset($banner->image)}})">
+                        <div class="slide-content">
+                            <div>
+                                <h3>
+                                    {{$banner->heading ?? ''}}
+                                </h3>
+                                <h5>
+                                    {{$banner->description ?? ''}}
+                                </h5>
+                                <div
+                                    class="d-flex justify-content-between gap-0 gap-sm-4 justify-content-sm-center mt-3 mt-sm-5">
+                                    @if(!empty($banner->button_one_text))
+                                        <a href="{{$banner->button_one_link}}"
+                                           class="btn btn-yellow">
+                                            <span>{{$banner->button_one_text}}</span> <img
+                                                data-src="{{asset('frontend/assets/images/arrow-right.svg')}}"
+                                                class="right-arrow lazy"
+                                                alt="">
+                                        </a>
+                                    @endif
+                                    @if(!empty($banner->button_two_text))
+                                        <a href="{{$banner->button_two_link ?? 'javascript:void(0)'}}"
+                                           class="btn btn-white">
+                                            <span>{{$banner->button_two_text ?? ''}}</span> <img
+                                                data-src="{{asset('frontend/assets/images/arrow-right-black.svg')}}"
+                                                class="right-arrow lazy" alt="">
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>
+</div>
+
 @include('frontend.includes.header')
 <!--about us-->
 <div class="aboutMe">
@@ -167,7 +224,7 @@
 </div>
 
 
-<div class="properties mt-5">
+<div class="properties mt-sm-5">
     <div class="container">
         <div class="row">
             @if(count($CommercialProjects) > 0)
@@ -628,6 +685,7 @@
 @include('frontend.includes.scripts')
 <script>
     $(document).ready(function () {
+
         const cards = document.querySelectorAll('.title-length');
         let maxHeight = 0;
         // Loop through each card to find the maximum height

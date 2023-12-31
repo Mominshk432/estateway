@@ -51,8 +51,7 @@
                         {{$director_message->section_heading ?? ''}}
                     </h2>
                     <div class="my-2">
-                        <img style="height: 100px;width: 100px" src="{{!empty($director_message->image) ? asset($director_message->image) : 'https://via.placeholder.com/1000x1000'}}
-" alt="">
+                        <img style="height: 100px;width: 100px" src="{{!empty($director_message->image) ? asset($director_message->image) : 'https://via.placeholder.com/1000x1000'}}" alt="">
                     </div>
                     <h5 class="text-theme-light">
                         {{$director_message->heading ?? ''}}
@@ -99,9 +98,10 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <div class="row flex-column-reverse flex-lg-row">
+                            <div class="row">
+{{--                                flex-column-reverse flex-lg-row--}}
                                 <div class="col-lg-4">
-                                    <div class="building">
+                                    <div class="building mb-3 mb-sm-0">
                                         <img
                                             src="{{!empty($why_choose_us->image) ? asset($why_choose_us->image) : 'https://via.placeholder.com/1000x1000'}}"
                                             class="w-100"

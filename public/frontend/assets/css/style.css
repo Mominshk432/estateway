@@ -44,12 +44,10 @@
     transition: all .5s;
     left: 50%;
     transform: translateX(-50%);
-<<<<<<< Updated upstream
+
     top: 110%;
-=======
-    top: 82px;
     z-index: 9999;
->>>>>>> Stashed changes
+
 }
 .search-sec {
     display: block;
@@ -209,6 +207,8 @@ body {
 
 .carousel-indicators {
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carousel-indicators button {
@@ -333,6 +333,7 @@ body {
 
 .about-content h1 {
     letter-spacing: 4px;
+    word-break: break-word;
 }
 
 .about-content p {
@@ -684,7 +685,7 @@ body {
 }
 
 .about-main {
-    padding: 40px 0;
+    padding-bottom: 40px;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
@@ -836,6 +837,7 @@ body {
 }
 
 .about-main-img {
+    margin-top: -60px;
     position: relative;
     z-index: -1;
 }
@@ -853,7 +855,7 @@ body {
     height: 100vh;
     overflow-y: scroll;
     top: 0;
-    z-index: 9;
+    z-index: 10;
 }
 
 .btn-social-icon {
@@ -1556,6 +1558,10 @@ hr {
 }
 
 @media screen and (max-width: 480px) {
+    .contact-icons
+    {
+        margin: 0;
+    }
     .theme-select {
         display: block;
     }
@@ -1693,10 +1699,57 @@ hr {
     .btn-theme-about {
         transform: translateX(14%);
     }
+
+    .about-content
+    {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    .search-section {
+        display: none;
+    }
+
+    .small-card img {
+        min-height: 230px;
+        object-fit: cover;
+    }
+
+    .project-content h4 {
+        font-size: 20px;
+    }
+
+    .mobile-navigation-inner ul {
+        list-style: none;
+        padding: 8% 0;
+    }
+
+    .properties-carousel .owl-nav {
+        position: absolute;
+        top: 34%;
+        transform: translate(1%, 0%);
+        width: 108%;
+        left: -36px;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .sp-light-carousel .owl-nav {
+        position: absolute;
+        top: 44%;
+        transform: translate(1%, 0%);
+        width: 107%;
+        left: -32px;
+        text-align: center;
+        z-index: 2;
+  }
     .project-inner-content
     {
         width: 90%;
         padding: 8px 10px;
+
     }
     .project-content p
     {
