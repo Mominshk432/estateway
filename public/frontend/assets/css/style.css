@@ -44,12 +44,10 @@
     transition: all .5s;
     left: 50%;
     transform: translateX(-50%);
-<<<<<<< Updated upstream
+
     top: 110%;
-=======
-    top: 82px;
     z-index: 9999;
->>>>>>> Stashed changes
+
 }
 .search-sec {
     display: block;
@@ -154,7 +152,7 @@ body {
     background-color: rgba(16, 15, 13, 0.9);
     display: block;
     align-items: center;
-    z-index: 9;
+    z-index: 8;
     width: 100%;
 }
 
@@ -346,11 +344,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
 .project-inner-content {
-    margin: 35px auto;
     width: 75%;
     padding: 12px 16px;
     background-color: rgba(63.03, 63.03, 63.03, 0.48);
@@ -1493,6 +1494,69 @@ hr {
     }
 }
 
+@media screen and (max-width: 992px) {
+    .search-section {
+        display: none;
+    }
+
+    .small-card img {
+        min-height: 230px;
+        object-fit: cover;
+    }
+
+    .project-content h4 {
+        font-size: 20px;
+    }
+
+    .mobile-navigation-inner ul {
+        list-style: none;
+        padding: 8% 0;
+    }
+
+    .properties-carousel .owl-nav {
+        position: absolute;
+        top: 34%;
+        transform: translate(1%, 0%);
+        width: 108%;
+        left: -36px;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .sp-light-carousel .owl-nav {
+        position: absolute;
+        top: 44%;
+        transform: translate(1%, 0%);
+        width: 107%;
+        left: -32px;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .contact-section {
+        padding: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .contact-1 {
+        width: 100%;
+    }
+
+    .contact-2 {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .contact-3 {
+        width: 100%;
+    }
+    iframe {
+        height: 290px;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .contact-icons
     {
@@ -1552,9 +1616,9 @@ hr {
         width: 85%;
     }
 
-    .main-slide {
-        height: 65vh;
-    }
+    /*.main-slide {*/
+    /*    height: 65vh;*/
+    /*}*/
 
     .header {
         min-height: 96px;
@@ -1592,7 +1656,8 @@ hr {
 
     .small-card img {
         width: 100%;
-        min-height: 200px;
+        min-height: 100px;
+        height: 130px;
         object-fit: cover;
     }
 
@@ -1634,6 +1699,7 @@ hr {
     .btn-theme-about {
         transform: translateX(14%);
     }
+
     .about-content
     {
         width: 100%;
@@ -1678,26 +1744,29 @@ hr {
         left: -32px;
         text-align: center;
         z-index: 2;
-    }
+  }
+    .project-inner-content
+    {
+        width: 90%;
+        padding: 8px 10px;
 
-    .contact-section {
-        padding: 20px;
-        display: block;
-        text-align: center;
     }
-
-    .contact-1 {
-        width: 100%;
+    .project-content p
+    {
+        margin-bottom: 0;
     }
-
-    .contact-2 {
-        width: 100%;
-        margin-top: 20px;
-        padding: 10px;
+    .project-bg
+    {
+        top: 50%;
+        transform: translateY(-50%);
     }
-
-    .contact-3 {
-        width: 100%;
+    .mt-10
+    {
+        margin-top: 5rem;
+    }
+    .slide-content div h3
+    {
+        font-size: 35px;
     }
 }
 
@@ -1718,14 +1787,6 @@ hr {
     iframe {
         height: 216px;
     }
-}
-
-@media screen and (min-width: 992px) {
-
-    iframe {
-        height: 290px;
-    }
-
 }
 
 @media screen and (min-width: 1200px) {
